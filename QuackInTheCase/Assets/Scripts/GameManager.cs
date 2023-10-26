@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void PlayGame()
+    public void PlayGame(int level)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(level);
     }
 
     public void QuitToMenu()
