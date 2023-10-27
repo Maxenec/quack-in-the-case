@@ -18,14 +18,10 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void PlayGame(int level)
+    public void SwitchScene(int level)
     {
         SceneManager.LoadScene(level);
-    }
-
-    public void QuitToMenu()
-    {
-        SceneManager.LoadScene(0);
+        Debug.Log("Switched to level "+ level);
     }
 
     public void QuitGame()
