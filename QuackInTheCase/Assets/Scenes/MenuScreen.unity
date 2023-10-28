@@ -715,16 +715,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1644711925}
+      - m_Target: {fileID: 1644711927}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SwitchScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: E1G2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &153086849
@@ -923,16 +923,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1644711925}
+      - m_Target: {fileID: 1644711927}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SwitchScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: E1G4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &209831686
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1644711925}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -1544,16 +1544,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1644711925}
+      - m_Target: {fileID: 1644711927}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SwitchScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: E1G5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &339791658
@@ -1954,7 +1954,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 374314228}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1644711927}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SwitchScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: E1C1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &374314228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4434,7 +4446,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 958938436}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1644711927}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SwitchScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: E1C2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &958938436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5754,16 +5778,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1644711925}
+      - m_Target: {fileID: 1644711927}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SwitchScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: E1G3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1387894348
@@ -6305,7 +6329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1644711924}
-  - component: {fileID: 1644711925}
+  - component: {fileID: 1644711927}
   - component: {fileID: 1644711926}
   m_Layer: 0
   m_Name: God
@@ -6329,18 +6353,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1644711925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1644711923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98d8e5430265fda4681b7f115471b3f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1644711926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6351,6 +6363,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d85b5785d5b6940f1bd703c41e536129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1644711927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644711923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98d8e5430265fda4681b7f115471b3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1674426426
@@ -6511,16 +6535,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1644711925}
+      - m_Target: {fileID: 1644711927}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SwitchScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: E1G6
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1675077977
@@ -7134,16 +7158,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1644711925}
+      - m_Target: {fileID: 1644711927}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: SwitchScene
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: E1G1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1813692071
