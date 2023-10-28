@@ -6,26 +6,37 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
+
     void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
 
-    public void SwitchScene(int level)
+    public void SwitchScene(string sceneToLoad)
     {
-        SceneManager.LoadScene(level);
-        Debug.Log("Switched to level "+ level);
+        SceneManager.LoadScene(sceneToLoad);
+        Debug.Log("Switched scene to " + sceneToLoad);
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
+
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void SaveGame()
+    {
+
+    }
+
+    public void RetrieveSave()
+    {
+
+    }
+
 }
