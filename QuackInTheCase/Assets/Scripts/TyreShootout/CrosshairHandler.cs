@@ -45,12 +45,12 @@ public class CrosshairHandler : MonoBehaviour
         {
             if (hit.collider.CompareTag("Tyres"))
             {
-                Debug.Log("Collision with Tyre detected.");
+                Debug.Log("Collision with Tyres detected.");
             }
         }
         else
         {
-            Debug.Log("Tyres not hit.");
+            Debug.Log("Collision unsuccessful with Tyres.");
         }
     }
 }

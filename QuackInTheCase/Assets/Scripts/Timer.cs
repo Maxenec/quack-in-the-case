@@ -11,6 +11,11 @@ public class Timer : MonoBehaviour
         
     }
 
+    private void SetTimer(float setTime)
+    {
+        timer = setTime;
+    }
+
     public void StartTimer(int timerLength)
     {
         timer = timerLength;

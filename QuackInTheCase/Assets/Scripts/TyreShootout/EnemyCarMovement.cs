@@ -44,7 +44,7 @@ public class EnemyCarMovement : MonoBehaviour
 
     private void CheckEdges()
     {
-        //Check if the square reaches the edges, then change direction.
+        //Check if the car reaches the edges, then change direction.
         if (transform.position.x >= rightEdge)
         {
             moveRight = false;

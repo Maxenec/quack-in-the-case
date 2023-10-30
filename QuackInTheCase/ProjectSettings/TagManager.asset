@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Edges
   - Tyres
+  - ForegroundClouds
+  - BackgroundClouds
+  - Buildings
   layers:
   - Default
   - TransparentFX
