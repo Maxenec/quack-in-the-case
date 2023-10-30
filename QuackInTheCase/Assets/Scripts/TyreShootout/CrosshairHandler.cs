@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CrosshairHandler : MonoBehaviour
 {
-
     private bool isDragging = false;
     private Vector3 offset;
     private float shake = 0.1f;
