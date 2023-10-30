@@ -33,10 +33,24 @@ public class CrosshairHandler : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
+        CheckCollision();
     }
 
-    private void CheckTarget()
+    private void CheckCollision()
     {
-        
+        Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(clickPosition, Vector2.zero);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Tyres"))
+            {
+                Debug.Log("Collision with Tyre detected.");
+            }
+        }
+        else
+        {
+            Debug.Log("Tyres not hit.");
+        }
     }
 }

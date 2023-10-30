@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Edges
+  - Tyres
   layers:
   - Default
   - TransparentFX
