@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Edges
+  - Tyres
+  - ForegroundClouds
+  - BackgroundClouds
+  - Buildings
   layers:
   - Default
   - TransparentFX
