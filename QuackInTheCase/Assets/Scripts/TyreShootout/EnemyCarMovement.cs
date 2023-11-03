@@ -102,6 +102,7 @@ public class EnemyCarMovement : MonoBehaviour
         else
         {
             transform.localScale = initialScale * scaleFactor;
+
             Destroy(gameObject);
         }
     }

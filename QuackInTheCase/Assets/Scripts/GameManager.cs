@@ -9,24 +9,37 @@ public class GameManager : MonoBehaviour
     private bool isPaused = false;
     public GameObject pauseMenu;
 
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             PauseGame();
-            Debug.Log("The game is now paused.");
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
             UnpauseGame();
-            Debug.Log("The game has been resumed.");
         }
     }
+
+    public void ReloadScene()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        Debug.Log("Reloaded current scene " + currentScene);
+        SceneManager.LoadScene(currentScene);
+        if (isPaused)
+        {
+            UnpauseGame();
+        }
+    }
+
     public void SwitchScene(string sceneToLoad)
     {
         SceneManager.LoadScene(sceneToLoad);
         Debug.Log("Switched scene to " + sceneToLoad);
+        if (isPaused)
+        {
+            UnpauseGame();
+        }
     }
 
     public void QuitGame()
@@ -39,15 +52,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void SaveGame(string level)
+    public void SaveGame()
     {
         Scene scene = SceneManager.GetActiveScene();
-        PlayerPrefs.SetString("Episode1", scene.name);
+        string unlocked = scene.name;
+        PlayerPrefs.SetString("Episode1", unlocked);
+        string test = PlayerPrefs.GetString("Episode 1");
+        Debug.Log(test);
+        PlayerPrefs.DeleteAll();
     }
 
     public void RetrieveSave()
     {
-
+        
     }
 
     public void PauseGame()
@@ -58,11 +75,13 @@ public class GameManager : MonoBehaviour
             pauseMenu.SetActive(true);
         }
         Time.timeScale = 0;
+        Debug.Log("The game is now paused.");
     }
 
     public void UnpauseGame()
     {
         Time.timeScale = 1;
+        Debug.Log("The game has been resumed.");
         isPaused = false;
         if (pauseMenu != null)
         {
