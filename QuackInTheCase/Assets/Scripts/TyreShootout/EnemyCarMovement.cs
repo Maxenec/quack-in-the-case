@@ -13,8 +13,11 @@ public class EnemyCarMovement : MonoBehaviour
     private Vector3 initialScale;
     private float speed = 2f;
     private float scaleFactor = 5f;
-    private float shrinkDuration = 4;
+    private float shrinkDuration = 3f;
     private float timer = 0f;
+    private bool failAnimationOver = false;
+    private bool winAnimationOver = false;
+    private bool carHit = false;
 
     public GameObject smoke;
 
@@ -40,10 +43,14 @@ public class EnemyCarMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!escaped)
+        if (!escaped && !carHit)
         {
             MoveCar();
             CheckEdges();
+        }
+        else if (carHit)
+        {
+            StopEnemyCar();
         }
         else
         {
@@ -88,6 +95,21 @@ public class EnemyCarMovement : MonoBehaviour
         smoke.SetActive(true);
     }
 
+    public bool FailAnimationStatus()
+    {
+        return failAnimationOver;
+    }
+
+    public bool WinAnimationStatus()
+    {
+        bool returnChecker = false;
+        if (winAnimationOver == true)
+        {
+            returnChecker = true;
+        }
+        return returnChecker;
+    }
+
     private void ZoomAway()
     {
         timer += Time.deltaTime;
@@ -101,9 +123,38 @@ public class EnemyCarMovement : MonoBehaviour
         }
         else
         {
-            transform.localScale = initialScale * scaleFactor;
+            transform.localScale = initialScale / scaleFactor;
+            failAnimationOver = true;
+        }
+    }
 
-            Destroy(gameObject);
+    public bool FailAnimationCompleted()
+    {
+        return failAnimationOver;
+    }
+
+    public void HitCar()
+    {
+        carHit = true;
+        Debug.Log("Car hit.");
+    }
+
+    public void StopEnemyCar()
+    {
+        timer += Time.deltaTime;
+
+        if (timer < shrinkDuration)
+        {
+            float progress = timer / shrinkDuration;
+            transform.localScale = Vector3.Lerp(initialScale, initialScale / scaleFactor, progress);
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+
+        }
+        else
+        {
+            transform.localScale = initialScale / scaleFactor;
+            winAnimationOver = true;
+            carHit = true;
         }
     }
 }

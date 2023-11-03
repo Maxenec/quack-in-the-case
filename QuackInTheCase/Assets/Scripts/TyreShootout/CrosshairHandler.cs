@@ -14,6 +14,7 @@ public class CrosshairHandler : MonoBehaviour
     private float shake = 0.1f;
     public GameObject enemyCar;
     public GameObject instruction;
+    public GameObject god;
 
     private void Start()
     {
@@ -63,13 +64,14 @@ public class CrosshairHandler : MonoBehaviour
         {
             if (hit.collider.CompareTag("Tyres"))
             {
+                god.GetComponent<LevelManager>().CarCollided();
                 Debug.Log("Collision with Tyres detected.");
             }
         }
         else
         {
             Debug.Log("Collision unsuccessful with Tyres.");
-            enemyCar.GetComponent<EnemyCarMovement>().ShotMissed();
+            god.GetComponent<LevelManager>().FailAnimation();
         }
         Destroy(gameObject);
     }

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     private bool isPaused = false;
     public GameObject pauseMenu;
+    public GameObject FailMenu;
+    public GameObject SuccessMenu;
 
     private void Update()
     {
@@ -66,6 +68,28 @@ public class GameManager : MonoBehaviour
     public void RetrieveSave()
     {
         
+    }
+
+    public void LoseGame()
+    {
+        if (FailMenu != null)
+        {
+            FailMenu.SetActive(true);
+            Time.timeScale = 0;
+            isPaused = true;
+            Debug.Log("You have failed the game.");
+        }
+    }
+
+    public void WinGame()
+    {
+        if (SuccessMenu != null)
+        {
+            SuccessMenu.SetActive(true);
+            Time.timeScale = 0;
+            isPaused = true;
+            Debug.Log("Congragulations, you have completed this minigame.");
+        }
     }
 
     public void PauseGame()
