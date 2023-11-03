@@ -5,9 +5,10 @@ using TMPro;
 
 public class Timer30s : MonoBehaviour
 {
-    private float timer = 30.0f;
+    public float timer = 30.0f;
     public TMP_Text timerUI;
-    public List<GameObject> disable;
+    public List<GameObject> disableOnTimer;
+    public List<GameObject> disableAfterTimer;
     public List<GameObject> enable;
     private bool pause = false;
 
@@ -33,17 +34,21 @@ public class Timer30s : MonoBehaviour
                 yield return null;
             }
             yield return new WaitForSeconds(1.0f);
-            Debug.Log("Time left: " + ((int)timer));
             timer -= 1.0f;
+            Debug.Log("Time left: " + ((int)timer));
             timerUI.text = timer.ToString();
+        }
+        for (int i = 0; i < disableOnTimer.Count; i++)
+        {
+            disableOnTimer[i].SetActive(false);
         }
         yield return new WaitForSeconds(1.0f);
         Debug.Log("Time is up.");
         for(int i = 0;i<enable.Count;i++){
             enable[i].SetActive(true);
         }
-        for(int i = 0;i<disable.Count;i++){
-            disable[i].SetActive(false);
+        for(int i = 0;i<disableAfterTimer.Count;i++){
+            disableAfterTimer[i].SetActive(false);
         }
     }
 
