@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     public void QuitToMenu()
     {
         SceneManager.LoadScene(0);
+        UnpauseGame();
     }
 
     public void SaveGame()
@@ -73,9 +74,9 @@ public class GameManager : MonoBehaviour
         if (pauseMenu != null)
         {
             pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+            Debug.Log("The game is now paused.");
         }
-        Time.timeScale = 0;
-        Debug.Log("The game is now paused.");
     }
 
     public void UnpauseGame()
