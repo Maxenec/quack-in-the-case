@@ -6,8 +6,8 @@ public class BackgroundAnimation : MonoBehaviour
 {
     private float foregroundMoveSpeed = 0.05f;
     private float backgroundMoveSpeed = 0.25f;
-    public float scaleFactor = 1.5f;
-    public float growthDuration = 60.0f;
+    private float scaleFactor = 1.5f;
+    private float growthDuration = 60.0f;
     private Vector3 initialScale;
     private float timer = 0f;
 

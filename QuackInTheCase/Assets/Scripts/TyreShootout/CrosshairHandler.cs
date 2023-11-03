@@ -4,35 +4,53 @@ using UnityEngine;
 
 public class CrosshairHandler : MonoBehaviour
 {
-    private bool isDragging = false;
+    private Color normalColor = Color.white;
+    private Color lightColor = Color.red;
+    private float pulseSpeed = 5.0f;
+    public SpriteRenderer spriteRenderer;
+
+    private bool isDragged = false;
     private Vector3 offset;
     private float shake = 0.1f;
+    public GameObject enemyCar;
+    public GameObject instruction;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        StartCoroutine(Pulse());
+    }
 
     private void OnMouseDown()
     {
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        isDragging = true;
+        if (!isDragged)
+        {
+            isDragged = true;
+            spriteRenderer.color = normalColor;
+        }
+        if (instruction != null)
+        {
+            instruction.SetActive(false);
+        }
+        
     }
 
     private void OnMouseDrag()
     {
-        if (isDragging)
-        {
-            Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-            Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
 
-            // Add a slight random shake effect to the position
-            float offsetX = Random.Range(-shake, shake);
-            float offsetY = Random.Range(-shake, shake);
-            Vector3 shakeOffset = new Vector3(offsetX, offsetY, 0);
+        // Add a slight random shake effect to the position
+        float offsetX = Random.Range(-shake, shake);
+        float offsetY = Random.Range(-shake, shake);
+        Vector3 shakeOffset = new Vector3(offsetX, offsetY, 0);
 
-            transform.position = curPosition + shakeOffset;
-        }
+        transform.position = curPosition + shakeOffset;
     }
 
     private void OnMouseUp()
     {
-        isDragging = false;
         CheckCollision();
     }
 
@@ -51,6 +69,19 @@ public class CrosshairHandler : MonoBehaviour
         else
         {
             Debug.Log("Collision unsuccessful with Tyres.");
+            enemyCar.GetComponent<EnemyCarMovement>().ShotMissed();
+        }
+        Destroy(gameObject);
+    }
+
+    IEnumerator Pulse()
+    {
+        while (!isDragged)
+        {
+            float t = Mathf.PingPong(Time.time * pulseSpeed, 1.0f);
+            Color lerpedColor = Color.Lerp(normalColor, lightColor, t);
+            spriteRenderer.color = lerpedColor;
+            yield return null;
         }
     }
 }
