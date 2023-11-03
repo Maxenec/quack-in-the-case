@@ -1,50 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Unity.UI;
 
 public class LevelManager : MonoBehaviour
 {
     private bool gameOver = false;
     public GameObject enemyCar;
+    private bool failureAnimationCompleted = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Timer>().StartTimer(10);
+        gameObject.GetComponent<Timer>().StartTimer(5);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<Timer>() != null)
+        if (!gameOver)
         {
-            if (gameObject.GetComponent<Timer>().TimerStatus() == true && gameOver == false)
+            CheckGameStatus();
+        }
+    }
+
+    void CheckGameStatus()
+    {
+        Timer timerComponent = gameObject.GetComponent<Timer>();
+        EnemyCarMovement enemyCarComponent = enemyCar.GetComponent<EnemyCarMovement>();
+
+        if (timerComponent.TimerStatus())
+        {
+            if (!enemyCarComponent.FailAnimationStatus())
             {
-                gameOver = true;
-                enemyCar.GetComponent<EnemyCarMovement>().ShotMissed();
+                FailAnimation();
+            }
+            else if (enemyCarComponent.WinAnimationStatus())
+            {
+                WinAnimation();
+            }
+            else if (enemyCarComponent.FailAnimationCompleted())
+            {
+                failureAnimationCompleted = true;
             }
         }
-        else if (enemyCar != null && enemyCar.GetComponent<EnemyCarMovement>().AnimationStatus() == true)
+
+        if (failureAnimationCompleted)
         {
-            FailGame();
+            ShowFailScreen();
         }
-        else if (enemyCar == null && gameOver == false)
-        {
-            gameOver = true;
-            gameObject.GetComponent<GameManager>().EndGame();
-        }
+    }
+
+    void ShowFailScreen()
+    {
+        gameOver = true;
+        gameObject.GetComponent<GameManager>().LoseGame();
     }
 
     public void CarCollided()
     {
-        Destroy(gameObject.GetComponent<Timer>());
+        gameObject.GetComponent<Timer>().StopTimer();
         gameObject.GetComponent<GameManager>().WinGame();
     }
 
-    public void FailGame()
+    public void FailAnimation()
     {
-        Destroy(gameObject.GetComponent<Timer>());
+        if (gameObject.GetComponent<Timer>().TimerStatus() == false)
+        {
+            gameObject.GetComponent<Timer>().StopTimer();
+        }
         enemyCar.GetComponent<EnemyCarMovement>().ShotMissed();
+    }
 
+    public void WinAnimation()
+    {
+        gameObject.GetComponent<Timer>().StopTimer();
+        enemyCar.GetComponent<EnemyCarMovement>().HitCar();
     }
 }

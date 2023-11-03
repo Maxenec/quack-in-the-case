@@ -71,7 +71,7 @@ public class CrosshairHandler : MonoBehaviour
         else
         {
             Debug.Log("Collision unsuccessful with Tyres.");
-            god.GetComponent<LevelManager>().FailGame();
+            god.GetComponent<LevelManager>().FailAnimation();
         }
         Destroy(gameObject);
     }

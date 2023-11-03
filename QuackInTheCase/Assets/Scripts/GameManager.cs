@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void EndGame()
+    public void LoseGame()
     {
         if (FailMenu != null)
         {
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
             SuccessMenu.SetActive(true);
             Time.timeScale = 0;
             isPaused = true;
-            Debug.Log("Congragulations, you have completed the minigame.");
+            Debug.Log("Congragulations, you have completed this minigame.");
         }
     }
 

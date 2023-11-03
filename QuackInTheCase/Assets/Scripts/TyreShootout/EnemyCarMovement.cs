@@ -15,7 +15,9 @@ public class EnemyCarMovement : MonoBehaviour
     private float scaleFactor = 5f;
     private float shrinkDuration = 3f;
     private float timer = 0f;
-    private bool animationOver = false;
+    private bool failAnimationOver = false;
+    private bool winAnimationOver = false;
+    private bool carHit = false;
 
     public GameObject smoke;
 
@@ -41,10 +43,14 @@ public class EnemyCarMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!escaped)
+        if (!escaped && !carHit)
         {
             MoveCar();
             CheckEdges();
+        }
+        else if (carHit)
+        {
+            StopEnemyCar();
         }
         else
         {
@@ -89,10 +95,15 @@ public class EnemyCarMovement : MonoBehaviour
         smoke.SetActive(true);
     }
 
-    public bool AnimationStatus()
+    public bool FailAnimationStatus()
+    {
+        return failAnimationOver;
+    }
+
+    public bool WinAnimationStatus()
     {
         bool returnChecker = false;
-        if (animationOver == true)
+        if (winAnimationOver == true)
         {
             returnChecker = true;
         }
@@ -112,9 +123,38 @@ public class EnemyCarMovement : MonoBehaviour
         }
         else
         {
-            transform.localScale = initialScale * scaleFactor;
-            animationOver = true;
-            Destroy(gameObject);
+            transform.localScale = initialScale / scaleFactor;
+            failAnimationOver = true;
+        }
+    }
+
+    public bool FailAnimationCompleted()
+    {
+        return failAnimationOver;
+    }
+
+    public void HitCar()
+    {
+        carHit = true;
+        Debug.Log("Car hit.");
+    }
+
+    public void StopEnemyCar()
+    {
+        timer += Time.deltaTime;
+
+        if (timer < shrinkDuration)
+        {
+            float progress = timer / shrinkDuration;
+            transform.localScale = Vector3.Lerp(initialScale, initialScale / scaleFactor, progress);
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+
+        }
+        else
+        {
+            transform.localScale = initialScale / scaleFactor;
+            winAnimationOver = true;
+            carHit = true;
         }
     }
 }
