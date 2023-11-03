@@ -35,7 +35,7 @@ public class Timer30s : MonoBehaviour
             }
             yield return new WaitForSeconds(1.0f);
             timer -= 1.0f;
-            Debug.Log("Time left: " + ((int)timer));
+            //Debug.Log("Time left: " + ((int)timer));
             timerUI.text = timer.ToString();
         }
         for (int i = 0; i < disableOnTimer.Count; i++)
@@ -43,7 +43,7 @@ public class Timer30s : MonoBehaviour
             disableOnTimer[i].SetActive(false);
         }
         yield return new WaitForSeconds(1.0f);
-        Debug.Log("Time is up.");
+        //Debug.Log("Time is up.");
         for(int i = 0;i<enable.Count;i++){
             enable[i].SetActive(true);
         }
@@ -55,12 +55,12 @@ public class Timer30s : MonoBehaviour
     public void StopTimer(){
         StopCoroutine(Countdown());
         pause = true;
-        Debug.Log("stop");
+        //Debug.Log("stop");
     }
 
     public void PlayTimer(){
         StartCoroutine(Countdown());
         pause = false;
-        Debug.Log("play");
+        //Debug.Log("play");
     }
 }
