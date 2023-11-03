@@ -4,33 +4,40 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    private float timer = 10.0f;
+    private float timer;
+    private bool timesUp = false;
+    private bool timerDisabled = false;
 
-    void Start()
-    {
-        
-    }
-
-    private void SetTimer(float setTime)
+    public void StartTimer(int setTime)
     {
         timer = setTime;
-    }
-
-    public void StartTimer(int timerLength)
-    {
-        timer = timerLength;
         StartCoroutine(Countdown());
     }
 
-    IEnumerator Countdown()
+    public void StopTimer()
     {
-        while (timer > 0)
+        timerDisabled = true;
+    }
+
+    private IEnumerator Countdown()
+    {
+        Debug.Log("Timer is set for " + timer + " seconds.");
+        while (timer > 0 && timerDisabled == false)
         {
             yield return new WaitForSeconds(1.0f);
-            Debug.Log("Time left: " + ((int)timer));
             timer -= 1.0f;
+            Debug.Log("Time left: " + ((int)timer));
         }
-        yield return new WaitForSeconds(1.0f);
-        Debug.Log("Time is up.");
+        if (timerDisabled == false)
+        {
+            yield return new WaitForSeconds(1.0f);
+            Debug.Log("Time is up.");
+            timesUp = true;
+        }
+    }
+
+    public bool TimerStatus()
+    {
+        return timesUp;
     }
 }

@@ -13,8 +13,9 @@ public class EnemyCarMovement : MonoBehaviour
     private Vector3 initialScale;
     private float speed = 2f;
     private float scaleFactor = 5f;
-    private float shrinkDuration = 4;
+    private float shrinkDuration = 3f;
     private float timer = 0f;
+    private bool animationOver = false;
 
     public GameObject smoke;
 
@@ -88,6 +89,16 @@ public class EnemyCarMovement : MonoBehaviour
         smoke.SetActive(true);
     }
 
+    public bool AnimationStatus()
+    {
+        bool returnChecker = false;
+        if (animationOver == true)
+        {
+            returnChecker = true;
+        }
+        return returnChecker;
+    }
+
     private void ZoomAway()
     {
         timer += Time.deltaTime;
@@ -102,7 +113,7 @@ public class EnemyCarMovement : MonoBehaviour
         else
         {
             transform.localScale = initialScale * scaleFactor;
-
+            animationOver = true;
             Destroy(gameObject);
         }
     }
