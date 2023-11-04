@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SuspectController : MonoBehaviour
 {
-    public int power = 25;
+    public int strength = 25;
     public bool blocking = false;
     public bool attacking = false;
     public GameObject myHP;
@@ -13,14 +13,15 @@ public class SuspectController : MonoBehaviour
     public GameObject shield;
     public GameObject attack;
     public GameObject myPos;
+    private Vector3 target;
     private float minWait = 1f;
     private float maxWait = 5f;
     private int state = 0;
-    public float xCenter = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        target = myPos.transform.position;
         StartCoroutine(AI());
     }
 
@@ -34,82 +35,75 @@ public class SuspectController : MonoBehaviour
         Debug.Log(power);
         if (myHP != null){
             Debug.Log(blocking);
-            if (blocking)
-            {
-                Debug.Log("blocked!");
-            }
-            else
+            if (!blocking)
             {
                 myHP.GetComponent<HP>().EffectHP(-power);
             }
         }
     }
 
-    IEnumerator AI()
-    {
-        while (!attacking)
-        {
+    IEnumerator AI(){
+        while (!attacking){
             yield return new WaitForSeconds(Random.Range(minWait, maxWait));
             state = Random.Range(0, 3);
             Debug.Log(state);
-            if (state == 0)
-            {
+            if (state == 0){
                 Idle();
                 yield return null;
             }
-            else if (state == 1)
-            {
+            else if (state == 1){
                 Block();
                 yield return null;
             }
-            else if (state == 2)
-            {
+            else if (state == 2){
                 StartCoroutine(Attack());
             }
         }
     }
 
-    private void Idle()
-    {
+    private void Idle(){
         blocking = false;
         attacking = false;
         shield.SetActive(false);
         attack.SetActive(false);
     }
 
-    private void Block()
-    {
+    private void Block(){
         blocking = true;
         attacking = false;
         shield.SetActive(true);
         attack.SetActive(false);
     }
 
-    IEnumerator Attack()
-    {
+    IEnumerator Attack(){
         blocking = false;
         attacking = true;
         shield.SetActive(false);
         attack.SetActive(true);
         yield return new WaitForSeconds(1f);
-        StartCoroutine(Punch());
+        target = player.transform.position;
+        attack.SetActive(false);
+        StartCoroutine(Punch(false));
+        StopCoroutine(Attack());
     }
 
-    IEnumerator Punch()
-    {
-        transform.position = new Vector3(xCenter + Mathf.PingPong(Time.time * 0.25f, transform.position.x - player.transform.position.x), transform.position.y, transform.position.z);
-        if(transform.position.x < myPos.transform.position.x)
-        {
-            yield return 0;
-            StartCoroutine(Punch());
+    IEnumerator Punch(bool touch){
+        Debug.Log(target);
+        transform.position = Vector3.MoveTowards (transform.position, target, 50 * Time.deltaTime);
+        if (transform.position.x == target.x && !touch){
+            target = myPos.transform.position;
+            touch = true;
+            player.GetComponent<PlayerController>().Hit(strength);
+        }else if (transform.position.x == target.x && touch){
+            state = 0;
+            Idle();
+            StartCoroutine(AI());
+            StopCoroutine(Attack());
         }
-        player.GetComponent<PlayerController>().Hit(power);
-        attacking = false;
-        attack.SetActive(false);
-        state = 0;
-        //Debug.Log("Ouch!");
-        StartCoroutine(AI());
-
+        if(attacking){
+            yield return 0;
+            StartCoroutine(Punch(touch));
+        }
     }
 
 }

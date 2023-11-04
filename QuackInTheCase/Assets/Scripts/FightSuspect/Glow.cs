@@ -10,7 +10,7 @@ public class Glow : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(Pulse());
     }

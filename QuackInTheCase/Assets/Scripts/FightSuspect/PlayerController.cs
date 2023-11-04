@@ -5,13 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject myHP;
-    public GameObject Suspect;
+    public GameObject suspect;
+    public GameObject shield;
+    public GameObject myPos;
+    private Vector3 target;
     public int strength = 25;
+    public float coolDown = 2f;
     public bool blocking = false;
+    public bool attacking = false;
+    public bool canAttack = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        canAttack = true;
     }
 
     // Update is called once per frame
@@ -47,25 +53,54 @@ public class PlayerController : MonoBehaviour
 
     public void LeftClick()
     {
-        if (myHP != null)
+        if (myHP != null && !blocking && !attacking && canAttack)
         {
-            Suspect.GetComponent<SuspectController>().Hit(strength);
+            attacking = true;
+            target = suspect.transform.position;
+            StartCoroutine(Punch(false));
         }
     }
 
     public void RightClickDown()
     {
-        if (!blocking)
+        if (myHP != null && !blocking && !attacking)
         {
             blocking = true;
+            shield.SetActive(true);
         }
     }
 
     public void RightClickUp()
     {
-        if (blocking)
+        if (myHP != null && blocking && !attacking)
         {
             blocking = false;
+            shield.SetActive(false);
         }
+    }
+
+    IEnumerator Punch(bool touch){
+        Debug.Log(target);
+        transform.position = Vector3.MoveTowards (transform.position, target, 50 * Time.deltaTime);
+        if (transform.position.x == target.x && !touch){
+            target = myPos.transform.position;
+            touch = true;
+            suspect.GetComponent<SuspectController>().Hit(strength);
+    }else if (transform.position.x == target.x && touch){
+            attacking = false;
+            StartCoroutine(CoolDown(coolDown));
+            StopCoroutine(Punch(touch));
+        }
+        if(attacking){
+            yield return 0;
+            StartCoroutine(Punch(touch));
+        }
+    }
+
+    IEnumerator CoolDown(float time){
+        Debug.Log("Cool down");
+        canAttack = false;
+        yield return new WaitForSeconds(time);
+        canAttack = true;
     }
 }
