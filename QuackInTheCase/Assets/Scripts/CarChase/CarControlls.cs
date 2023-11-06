@@ -11,7 +11,6 @@ public class CarControlls : MonoBehaviour
     private bool leftLane = true;
     //speed the car changes lane
     private float speed = 40.0f;
-    private bool crashed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +22,7 @@ public class CarControlls : MonoBehaviour
     void Update()
     {
         //left arrow key
-         if (Input.GetKeyDown("left")){
+        if (Input.GetKeyDown("left")){
             //print("left arrow");
             StartCoroutine(Left());
         }
@@ -36,41 +35,31 @@ public class CarControlls : MonoBehaviour
 
     IEnumerator Left(){
         //check if they are in the right lane
-        if(leftLane == false && crashed == false){
+        if(!leftLane){
             //move car closer to left lane
             transform.position = Vector3.MoveTowards(transform.position, leftLanePos.transform.position, speed * Time.deltaTime);
             //if car is not in the left lane then wait one frame and start this function again
-            if(transform.position.x > leftLanePos.transform.position.x && crashed == false){
+            if(transform.position.x > leftLanePos.transform.position.x){
                 yield return 0;
                 StartCoroutine(Left());
-            }else if(crashed == false){
-                leftLane = true;
             }else{
-                StopCoroutine(Right());
-                StopCoroutine(Left());
+                leftLane = true;
             }
         }
     }
 
     IEnumerator Right(){
         //check if they are in the left lane
-        if(leftLane == true && crashed == false){
+        if(leftLane){
             //move car closer to right lane
             transform.position = Vector3.MoveTowards(transform.position, rightLanePos.transform.position, speed * Time.deltaTime);
             //if car is not in the right lane then wait one frame and start this function again
-            if(transform.position.x < rightLanePos.transform.position.x && crashed == false){
+            if(transform.position.x < rightLanePos.transform.position.x){
                 yield return 0;
                 StartCoroutine(Right());
-            }else if(crashed == false){
-                leftLane = false;
             }else{
-                StopCoroutine(Left());
-                StopCoroutine(Right());
+                leftLane = false;
             }
         }
-    }
-
-    public void Crash(){
-        crashed = true;
     }
 }
