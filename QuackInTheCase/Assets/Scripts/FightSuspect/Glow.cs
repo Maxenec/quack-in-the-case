@@ -21,10 +21,8 @@ public class Glow : MonoBehaviour
         
     }
 
-    IEnumerator Pulse()
-    {
-        while (gameObject.activeSelf)
-        {
+    IEnumerator Pulse(){
+        while (gameObject.activeSelf){ //while this is active ping pong between two different colors
             float t = Mathf.PingPong(Time.time * pulseSpeed, 1.0f);
             Color lerpedColor = Color.Lerp(normalColor, lightColor, t);
             spriteRenderer.color = lerpedColor;

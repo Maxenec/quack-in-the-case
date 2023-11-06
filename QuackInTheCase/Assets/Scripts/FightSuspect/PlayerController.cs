@@ -26,79 +26,67 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             LeftClick();
         }
-        if (Input.GetMouseButtonDown(1))
-        {
+        if (Input.GetMouseButtonDown(1)){
             RightClickDown();
         }
-        if (Input.GetMouseButtonUp(1))
-        {
+        if (Input.GetMouseButtonUp(1)){
             RightClickUp();
         }
     }
 
-    public void Hit(int power)
-    {
-        if (myHP != null)
-        {;
-            if (blocking)
-            {
+    public void Hit(int power){ //when this is hit, if it is blocking reduce it's HP by the power of the hit else reduce the HP to 0
+        if (myHP != null){
+            if (blocking){
                 myHP.GetComponent<HP>().EffectHP(-power);
             }
-            else
-            {
+            else{
                 myHP.GetComponent<HP>().SetHP(0);
             }
         }
     }
 
-    public void LeftClick()
-    {
-        if (myHP != null && !blocking && !attacking && canAttack)
-        {
+    public void LeftClick(){ //when the left mouse button is clicked, if it is not blocking or attacking and it can attack the it attacks the suspect
+        if (myHP != null && !blocking && !attacking && canAttack){
             attacking = true;
             target = suspect.transform.position;
             StartCoroutine(Punch(false));
         }
     }
 
-    public void RightClickDown()
-    {
-        if (myHP != null && !blocking && !attacking)
-        {
+    public void RightClickDown(){ //when the right mouse button is pressed down, if it is not blocking or attacking, it blocks
+        if (myHP != null && !blocking && !attacking){
             blocking = true;
             shield.SetActive(true);
         }
     }
 
-    public void RightClickUp()
-    {
-        if (myHP != null && blocking && !attacking)
-        {
+    public void RightClickUp(){ //when the right button is relesed it stops blocking
+        if (myHP != null && blocking && !attacking){
             blocking = false;
             shield.SetActive(false);
         }
     }
 
     IEnumerator Punch(bool touch){
-        Debug.Log(target);
-        transform.position = Vector3.MoveTowards (transform.position, target, 50 * Time.deltaTime);
-        if (transform.position.x == target.x && !touch){
+        //Debug.Log(target);
+        transform.position = Vector3.MoveTowards (transform.position, target, 50 * Time.deltaTime);//move towards the target
+        if (transform.position.x == target.x && !touch){//if it reaches the target and has not touched it befor then, chatge the target to the origional position and activate the suspect's hit function
             target = myPos.transform.position;
             touch = true;
             suspect.GetComponent<SuspectController>().Hit(strength);
-    }else if (transform.position.x == target.x && touch){
+    }else if (transform.position.x == target.x && touch){//if it reaches the target for the second time start the cool down function and stop this function
             attacking = false;
             StartCoroutine(CoolDown(coolDown));
             StopCoroutine(Punch(touch));
         }
-        if(attacking){
+        if(attacking){//if it is still attacking then wait one frame and repeteat this function
             yield return 0;
             StartCoroutine(Punch(touch));
         }
     }
 
-    IEnumerator CoolDown(float time){
-        Debug.Log("Cool down");
+    IEnumerator CoolDown(float time){//this can not attack until a set amount of time
+        //Debug.Log("Cool down");
         canAttack = false;
         yield return new WaitForSeconds(time);
         canAttack = true;

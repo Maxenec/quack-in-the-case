@@ -5,31 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MenuScreen.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Episode 1/E1C1.unity
     guid: b6357c472cc584bfdac6aab3b01dba96
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Episode 1/E1G1.unity
     guid: df49c430b682a744e8b55963c3d19818
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Episode 1/E1G2.unity
     guid: 3a4a8ce6514d84049a601cf37afff440
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Episode 1/E1G3.unity
     guid: 756039944969c104db2628ac39b4aff8
   - enabled: 1
     path: Assets/Scenes/Episode 1/E1G4.unity
     guid: 95f8606fd2f434d4499f95544921ce0d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Episode 1/E1G5.unity
     guid: 8db68e3ae902e6e4faead3b3358a72e5
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Episode 1/E1G6.unity
     guid: 19dd00ddd25fe204cb35fcf524b153bc
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Episode 1/E1C2.unity
     guid: 620097be8cca14cd89e092dc7ed458b1
   m_configObjects: {}
