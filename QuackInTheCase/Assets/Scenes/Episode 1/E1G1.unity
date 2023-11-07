@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 639242856}
-  manager: {fileID: 0}
+  manager: {fileID: 1616916108}
 --- !u!61 &46693579
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 639242856}
-  manager: {fileID: 0}
+  manager: {fileID: 1616916108}
 --- !u!61 &876283402
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 639242856}
-  manager: {fileID: 0}
+  manager: {fileID: 1616916108}
 --- !u!212 &1024441999
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 639242856}
-  manager: {fileID: 0}
+  manager: {fileID: 1616916108}
 --- !u!212 &1980930206
 SpriteRenderer:
   m_ObjectHideFlags: 0
