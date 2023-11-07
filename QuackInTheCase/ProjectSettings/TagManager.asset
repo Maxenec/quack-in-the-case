@@ -9,6 +9,9 @@ TagManager:
   - ForegroundClouds
   - BackgroundClouds
   - Buildings
+  - Ground
+  - Regenerator
+  - Obstacle
   layers:
   - Default
   - TransparentFX

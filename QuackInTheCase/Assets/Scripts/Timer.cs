@@ -19,7 +19,6 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         StopAllCoroutines();
-        timesUp = true;
     }
 
     private IEnumerator Countdown()

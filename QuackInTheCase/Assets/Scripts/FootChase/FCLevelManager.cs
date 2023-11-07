@@ -4,15 +4,45 @@ using UnityEngine;
 
 public class FCLevelManager : MonoBehaviour
 {
+    private bool gameOver = false;
+    public GameObject player;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        gameObject.GetComponent<Timer>().StartTimer(15);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (!gameOver)
+        {
+            CheckGameStatus();
+        }
+    }
+
+    private void CheckGameStatus()
+    {
+        if (gameObject.GetComponent<Timer>().TimerStatus())
+        {
+            WinLevel();
+        }
+        else if (player.GetComponent<PlayerRunController>().HitStatus())
+        {
+            FailLevel();
+        }
+    }
+
+    private void WinLevel()
+    {
+        gameOver = true;
+        gameObject.GetComponent<GameManager>().WinGame();
+    }
+
+    private void FailLevel()
+    {
+        gameOver = true;
+        gameObject.GetComponent<GameManager>().LoseGame();
     }
 }
