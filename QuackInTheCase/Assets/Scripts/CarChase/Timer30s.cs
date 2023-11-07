@@ -10,7 +10,8 @@ public class Timer30s : MonoBehaviour
     public List<GameObject> disableOnTimer;
     public List<GameObject> disableAfterTimer;
     public List<GameObject> enable;
-    private bool pause = false;
+    public GameObject manager;
+    public bool winAfter;
 
     void Start()
     {
@@ -21,7 +22,6 @@ public class Timer30s : MonoBehaviour
     public void StartTimer(int timerLength)
     {
         timer = timerLength;
-        pause = false;
         StartCoroutine(Countdown());
     }
 
@@ -29,13 +29,9 @@ public class Timer30s : MonoBehaviour
     {
         while (timer > 0)
         {
-            while (pause)
-            {
-                yield return null;
-            }
             yield return new WaitForSeconds(1.0f);
             timer -= 1.0f;
-            Debug.Log("Time left: " + ((int)timer));
+            //Debug.Log("Time left: " + ((int)timer));
             timerUI.text = timer.ToString();
         }
         for (int i = 0; i < disableOnTimer.Count; i++)
@@ -43,24 +39,18 @@ public class Timer30s : MonoBehaviour
             disableOnTimer[i].SetActive(false);
         }
         yield return new WaitForSeconds(1.0f);
-        Debug.Log("Time is up.");
+        //Debug.Log("Time is up.");
         for(int i = 0;i<enable.Count;i++){
             enable[i].SetActive(true);
         }
         for(int i = 0;i<disableAfterTimer.Count;i++){
             disableAfterTimer[i].SetActive(false);
         }
-    }
-
-    public void StopTimer(){
-        StopCoroutine(Countdown());
-        pause = true;
-        Debug.Log("stop");
-    }
-
-    public void PlayTimer(){
-        StartCoroutine(Countdown());
-        pause = false;
-        Debug.Log("play");
+        
+        if(winAfter){
+            manager.GetComponent<GameManager>().WinGame();
+        }else{
+            manager.GetComponent<GameManager>().LoseGame();
+        }
     }
 }

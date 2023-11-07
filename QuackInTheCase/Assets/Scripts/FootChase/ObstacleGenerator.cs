@@ -32,7 +32,7 @@ public class ObstacleGenerator : MonoBehaviour
         }
         else if (obstacleIndex == 1)
         {
-            obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -3.5f, transform.position.z), transform.rotation);
+            obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -3.3f, transform.position.z), transform.rotation);
         }
         else
         {

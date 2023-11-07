@@ -15,7 +15,6 @@ public class Obstacles : MonoBehaviour
     public List<GameObject> obs;
     //reference to the current obstacle
     private GameObject currentObs;
-    private bool crashed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +29,7 @@ public class Obstacles : MonoBehaviour
     }
 
     private void Spawner(){
-        //random bool (true or false)/(left or right)
+        //random bool (true or false)=(left or right)
         if(Random.Range(0.0f, 1.0f)>0.5){
             left = true;
         }else{
@@ -45,9 +44,7 @@ public class Obstacles : MonoBehaviour
         }else{
             currentObs.transform.position = rightObsPos.transform.position;
         }
-        if(crashed == false){
             StartCoroutine(Move());
-        }
     }
 
     IEnumerator Move(){
@@ -55,19 +52,10 @@ public class Obstacles : MonoBehaviour
         if(currentObs.transform.position.y > -10){
             currentObs.transform.position += Vector3.down * speed * Time.deltaTime;
             yield return 0;
-            if(crashed == false){
                 StartCoroutine(Move());
-            }
         } else {
             //if the obstacle reaches y level -10 then repeat this script
             Spawner();
         }
-        if(crashed){
-            StopCoroutine(Move());
-        }
-    }
-
-    public void Crash(){
-        crashed = true;
     }
 }

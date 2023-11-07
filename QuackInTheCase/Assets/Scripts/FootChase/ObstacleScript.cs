@@ -23,6 +23,9 @@ public class ObstacleScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Regenerator"))
         {
             obstacleGenerator.GenerateRandomObstacles();
+        }
+        else if (collision.gameObject.CompareTag("Edges"))
+        {
             Destroy(gameObject);
         }
     }
