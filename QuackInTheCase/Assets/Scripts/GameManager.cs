@@ -52,7 +52,10 @@ public class GameManager : MonoBehaviour
     public void QuitToMenu()
     {
         SceneManager.LoadScene(0);
-        UnpauseGame();
+        if (isPaused)
+        {
+            UnpauseGame();
+        }
     }
 
     public void SaveGame()

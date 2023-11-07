@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -30,7 +29,7 @@ public class LevelManager : MonoBehaviour
         Timer timerComponent = gameObject.GetComponent<Timer>();
         EnemyCarMovement enemyCarComponent = enemyCar.GetComponent<EnemyCarMovement>();
 
-        if (timerComponent.TimerStatus())
+        if (timerComponent.TimerStopped() || timerComponent.TimerStatus())
         {
             if (!enemyCarComponent.FailAnimationStatus())
             {

@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     private float timer;
     private bool timesUp = false;
+    private bool timerStopped = false;
     public TMP_Text timerUI;
 
     public void StartTimer(int setTime)
@@ -19,7 +20,7 @@ public class Timer : MonoBehaviour
     public void StopTimer()
     {
         StopAllCoroutines();
-        timesUp = true;
+        timerStopped = true;
     }
 
     private IEnumerator Countdown()
@@ -39,5 +40,10 @@ public class Timer : MonoBehaviour
     public bool TimerStatus()
     {
         return timesUp;
+    }
+
+    public bool TimerStopped()
+    {
+        return timerStopped;
     }
 }
