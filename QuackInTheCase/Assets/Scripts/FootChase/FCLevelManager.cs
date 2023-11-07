@@ -6,6 +6,7 @@ public class FCLevelManager : MonoBehaviour
 {
     private bool gameOver = false;
     public GameObject player;
+    public GameObject obstacleGenerator;
 
     // Start is called before the first frame update
     private void Start()
@@ -26,6 +27,7 @@ public class FCLevelManager : MonoBehaviour
     {
         if (gameObject.GetComponent<Timer>().TimerStatus())
         {
+            Destroy(obstacleGenerator);
             WinLevel();
         }
         else if (player.GetComponent<PlayerRunController>().HitStatus())

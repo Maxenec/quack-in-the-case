@@ -22,7 +22,10 @@ public class ObstacleScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Regenerator"))
         {
-            obstacleGenerator.GenerateRandomObstacles();
+            if (obstacleGenerator != null)
+            {
+                obstacleGenerator.GenerateRandomObstacles();
+            }
         }
         else if (collision.gameObject.CompareTag("Edges"))
         {

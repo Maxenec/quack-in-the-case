@@ -26,13 +26,17 @@ public class ObstacleGenerator : MonoBehaviour
         GameObject obstaclePreFab;
 
         //Spawn different obstacles based on the obstacle index
-        if (obstacleIndex == 0)
-        {
-            obstaclePreFab = Instantiate(obstacles[obstacleIndex], transform.position, transform.rotation);
-        }
-        else if (obstacleIndex == 1)
+        if (obstacleIndex == 1)
         {
             obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -3.3f, transform.position.z), transform.rotation);
+        }
+        else if (obstacleIndex == 2)
+        {
+            obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -1.7f, transform.rotation.z), transform.rotation);
+        }
+        else if (obstacleIndex == 3)
+        {
+            obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(10.5f, -2, transform.rotation.z), transform.rotation);
         }
         else
         {
