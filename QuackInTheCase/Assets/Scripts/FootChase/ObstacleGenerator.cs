@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleGenerator : MonoBehaviour
 {
     public GameObject[] obstacles;
-    private float speed = 15.0f;
+    private float speed = 12.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,7 @@ public class ObstacleGenerator : MonoBehaviour
         }
         else if (obstacleIndex == 3)
         {
-            obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(10.5f, -2, transform.rotation.z), transform.rotation);
+            obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -1.3f, 0.1f), transform.rotation);
         }
         else
         {

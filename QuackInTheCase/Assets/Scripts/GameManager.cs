@@ -7,17 +7,18 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private bool isPaused = false;
+    private bool gameOver = false;
     public GameObject pauseMenu;
     public GameObject FailMenu;
     public GameObject SuccessMenu;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && !gameOver)
         {
             PauseGame();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused && !gameOver)
         {
             UnpauseGame();
         }
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentScene);
         if (isPaused)
         {
+            gameOver = false;
             UnpauseGame();
         }
     }
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Switched scene to " + sceneToLoad);
         if (isPaused)
         {
+            gameOver = false;
             UnpauseGame();
         }
     }
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
         if (isPaused)
         {
+            gameOver = false;
             UnpauseGame();
         }
     }
@@ -77,6 +81,7 @@ public class GameManager : MonoBehaviour
     {
         if (FailMenu != null)
         {
+            gameOver = true;
             FailMenu.SetActive(true);
             Time.timeScale = 0;
             isPaused = true;
@@ -88,6 +93,7 @@ public class GameManager : MonoBehaviour
     {
         if (SuccessMenu != null)
         {
+            gameOver = true;
             SuccessMenu.SetActive(true);
             Time.timeScale = 0;
             isPaused = true;
@@ -97,9 +103,9 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        isPaused = true;
         if (pauseMenu != null)
         {
+            isPaused = true;
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
             Debug.Log("The game is now paused.");
@@ -108,12 +114,12 @@ public class GameManager : MonoBehaviour
 
     public void UnpauseGame()
     {
-        Time.timeScale = 1;
-        Debug.Log("The game has been resumed.");
-        isPaused = false;
         if (pauseMenu != null)
         {
+            isPaused = false;
             pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+            Debug.Log("The game has been resumed.");
         }
     }
 }
