@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerRunController : MonoBehaviour
 {
-    public float jumpForce = 25f;
+    private float jumpForce = 26f;
     private bool isGrounded = false;
     private bool hitObstacle = false;
 
@@ -39,7 +39,7 @@ public class PlayerRunController : MonoBehaviour
             animator.SetTrigger("Jump");
             Jump();
         }
-        else if (isGrounded && Input.GetKeyDown(KeyCode.DownArrow))
+        else if (isGrounded && Input.GetKey(KeyCode.DownArrow))
         {
             Duck();
         }
@@ -53,6 +53,7 @@ public class PlayerRunController : MonoBehaviour
     {
         if (rb != null)
         {
+            Stand();
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
         }
@@ -66,12 +67,14 @@ public class PlayerRunController : MonoBehaviour
     {
         boxCollider.offset = new Vector2(boxCollider.offset.y, -0.505f);
         boxCollider.size = duckingSize;
+        animator.SetBool("isDucking", true);
     }
 
     private void Stand()
     {
         boxCollider.size = normalSize;
         boxCollider.offset = new Vector2(boxCollider.offset.y, -0.23f);
+        animator.SetBool("isDucking", false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

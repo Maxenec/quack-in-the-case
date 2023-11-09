@@ -20,14 +20,14 @@ public class ObstacleScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Regenerator"))
+        if (collision.gameObject.tag == "Regenerator")
         {
             if (obstacleGenerator != null)
             {
                 obstacleGenerator.GenerateRandomObstacles();
             }
         }
-        else if (collision.gameObject.CompareTag("Edges"))
+        else if (collision.gameObject.tag == "Edges")
         {
             Destroy(gameObject);
         }
