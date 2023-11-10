@@ -15,8 +15,11 @@ public class Timer30s : MonoBehaviour
 
     void Start()
     {
-        timerUI.text = timer.ToString();
-        StartTimer((int)timer);
+        if (timerUI != null)
+        {
+            timerUI.text = timer.ToString();
+            StartTimer((int)timer);
+        }
     }
 
     public void StartTimer(int timerLength)
