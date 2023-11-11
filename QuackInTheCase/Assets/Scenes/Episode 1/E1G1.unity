@@ -1471,7 +1471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838fc334b70380045ad421cf1be607e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 30
+  timer: 20
   timerUI: {fileID: 298768939}
   disableOnTimer:
   - {fileID: 636197939}
