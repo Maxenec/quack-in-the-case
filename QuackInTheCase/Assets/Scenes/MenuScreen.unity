@@ -2979,7 +2979,7 @@ GameObject:
   - component: {fileID: 449446853}
   - component: {fileID: 449446852}
   m_Layer: 5
-  m_Name: DeveloperTitle
+  m_Name: ProgrammerTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3002,7 +3002,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 44.999878}
-  m_SizeDelta: {x: 300, y: 40}
+  m_SizeDelta: {x: 350, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &449446852
 MonoBehaviour:
@@ -3024,7 +3024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Developers
+  m_text: Programmers
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a22068343252ae047b2d9ad7b78eb2e4, type: 2}
   m_sharedMaterial: {fileID: -2632580823459271683, guid: a22068343252ae047b2d9ad7b78eb2e4, type: 2}
@@ -4861,7 +4861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 835301715}
   m_Layer: 5
-  m_Name: Developers
+  m_Name: Programmers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6665,7 +6665,7 @@ GameObject:
   - component: {fileID: 1235251855}
   - component: {fileID: 1235251854}
   m_Layer: 5
-  m_Name: DeveloperName
+  m_Name: ProgrammerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
