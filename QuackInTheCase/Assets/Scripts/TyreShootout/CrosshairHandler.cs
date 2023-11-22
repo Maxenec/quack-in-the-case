@@ -21,6 +21,19 @@ public class CrosshairHandler : MonoBehaviour
         StartCoroutine(Pulse());
     }
 
+    private void Update()
+    {
+        if (god.GetComponent<Timer>().TimerStatus())
+        {
+            if (instruction != null)
+            {
+                instruction.SetActive(false);
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
     private void OnMouseDown()
     {
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);

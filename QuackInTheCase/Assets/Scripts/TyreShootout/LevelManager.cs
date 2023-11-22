@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Timer>().StartTimer(5);
+        GetComponent<Timer>().StartTimer(5);
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
 
     void CheckGameStatus()
     {
-        Timer timerComponent = gameObject.GetComponent<Timer>();
+        Timer timerComponent = GetComponent<Timer>();
         EnemyCarMovement enemyCarComponent = enemyCar.GetComponent<EnemyCarMovement>();
 
         if (timerComponent.TimerStopped() || timerComponent.TimerStatus())
@@ -51,27 +51,27 @@ public class LevelManager : MonoBehaviour
     void ShowFailScreen()
     {
         gameOver = true;
-        gameObject.GetComponent<GameManager>().LoseGame();
+        GetComponent<GameManager>().LoseGame();
     }
 
     public void CarCollided()
     {
-        gameObject.GetComponent<Timer>().StopTimer();
-        gameObject.GetComponent<GameManager>().WinGame();
+        GetComponent<Timer>().StopTimer();
+        GetComponent<GameManager>().WinGame();
     }
 
     public void FailAnimation()
     {
-        if (gameObject.GetComponent<Timer>().TimerStatus() == false)
+        if (!GetComponent<Timer>().TimerStatus())
         {
-            gameObject.GetComponent<Timer>().StopTimer();
+            GetComponent<Timer>().StopTimer();
         }
         enemyCar.GetComponent<EnemyCarMovement>().ShotMissed();
     }
 
     public void WinAnimation()
     {
-        gameObject.GetComponent<Timer>().StopTimer();
+        GetComponent<Timer>().StopTimer();
         enemyCar.GetComponent<EnemyCarMovement>().HitCar();
     }
 }
