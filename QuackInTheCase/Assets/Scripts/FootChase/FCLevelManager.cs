@@ -7,14 +7,21 @@ public class FCLevelManager : MonoBehaviour
     private bool gameOver = false;
     public GameObject player;
     public GameObject obstacleGenerator;
+    private Timer timer;
+    private GameManager gameManager;
 
-    // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
-        gameObject.GetComponent<Timer>().StartTimer(15);
+        //Simplifies the getcomponent into one word in order to make the code more readable.
+        timer = GetComponent<Timer>();
+        gameManager = GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        timer.StartTimer(15);
+    }
+
     private void Update()
     {
         if (!gameOver)
@@ -25,26 +32,26 @@ public class FCLevelManager : MonoBehaviour
 
     private void CheckGameStatus()
     {
-        if (gameObject.GetComponent<Timer>().TimerStatus())
+        if (timer.TimerStatus())
         {
-            Destroy(obstacleGenerator);
-            WinLevel();
+            EndLevel(true);
         }
         else if (player.GetComponent<PlayerRunController>().HitStatus())
         {
-            FailLevel();
+            EndLevel(false);
         }
     }
 
-    private void WinLevel()
+    private void EndLevel(bool isWin)
     {
         gameOver = true;
-        gameObject.GetComponent<GameManager>().WinGame();
-    }
-
-    private void FailLevel()
-    {
-        gameOver = true;
-        gameObject.GetComponent<GameManager>().LoseGame();
+        if (isWin)
+        {
+            gameManager.WinGame();
+        }
+        else
+        {
+            gameManager.LoseGame();
+        }
     }
 }

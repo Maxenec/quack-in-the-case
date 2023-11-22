@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleGenerator : MonoBehaviour
@@ -13,36 +11,30 @@ public class ObstacleGenerator : MonoBehaviour
         GenerateRandomObstacles();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void GenerateRandomObstacles()
     {
         int obstacleIndex = Random.Range(0, obstacles.Length);
 
-        GameObject obstaclePreFab;
+        Vector3 spawnPosition = GetSpawnPosition(obstacleIndex);
 
-        //Spawn different obstacles based on the obstacle index
+        GameObject obstaclePrefab = Instantiate(obstacles[obstacleIndex], spawnPosition, Quaternion.identity);
+
+        obstaclePrefab.GetComponent<ObstacleScript>().obstacleGenerator = this;
+    }
+
+    private Vector3 GetSpawnPosition(int obstacleIndex)
+    {
         switch (obstacleIndex)
         {
             case 1:
-                obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -3.3f, transform.position.z), transform.rotation);
-                break;
+                return new Vector3(transform.position.x, -3.3f, transform.position.z);
             case 2:
-                obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -1.7f, transform.rotation.z), transform.rotation);
-                break;
+                return new Vector3(transform.position.x, -1.7f, transform.position.z);
             case 3:
-                obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -1.3f, 0.1f), transform.rotation);
-                break;
+                return new Vector3(transform.position.x, -1.3f, 0.1f);
             default:
-                obstaclePreFab = Instantiate(obstacles[obstacleIndex], transform.position, transform.rotation);
-                break;
+                return transform.position;
         }
-
-        obstaclePreFab.GetComponent<ObstacleScript>().obstacleGenerator = this;
     }
 
     public float ObstacleSpeed()
