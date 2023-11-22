@@ -15,21 +15,24 @@ public class ObstacleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * obstacleGenerator.ObsSpeed() *  Time.deltaTime);
+        transform.Translate(Vector2.left * obstacleGenerator.ObstacleSpeed() *  Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Regenerator")
+        switch (collision.gameObject.tag)
         {
-            if (obstacleGenerator != null)
-            {
-                obstacleGenerator.GenerateRandomObstacles();
-            }
-        }
-        else if (collision.gameObject.tag == "Edges")
-        {
-            Destroy(gameObject);
+            case "Regenerator":
+                if (obstacleGenerator != null)
+                {
+                    obstacleGenerator.GenerateRandomObstacles();
+                }
+                break;
+            case "Edges":
+                Destroy(gameObject);
+                break;
+            default: 
+                break;
         }
     }
 }

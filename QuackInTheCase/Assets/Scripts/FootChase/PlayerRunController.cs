@@ -17,6 +17,19 @@ public class PlayerRunController : MonoBehaviour
 
     private void Awake()
     {
+        InitializeColliders();
+    }
+
+    void Update()
+    {
+        if (isGrounded)
+        {
+            CheckInputForAction();
+        }
+    }
+
+    private void InitializeColliders()
+    {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         animator.SetBool("isRunning", true);
@@ -25,25 +38,17 @@ public class PlayerRunController : MonoBehaviour
         duckingSize = new Vector2(normalSize.y, 1);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void CheckInputForAction()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isGrounded && Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            animator.SetTrigger("Jump");
             Jump();
         }
-        else if (isGrounded && Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             Duck();
         }
-        else if (isGrounded && Input.GetKeyUp(KeyCode.DownArrow))
+        else if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             Stand();
         }
@@ -65,16 +70,19 @@ public class PlayerRunController : MonoBehaviour
 
     private void Duck()
     {
-        boxCollider.offset = new Vector2(boxCollider.offset.y, -0.505f);
-        boxCollider.size = duckingSize;
-        animator.SetBool("isDucking", true);
+        AdjustCollider(new Vector2(0, -0.505f), duckingSize, true);
     }
 
     private void Stand()
     {
-        boxCollider.size = normalSize;
-        boxCollider.offset = new Vector2(boxCollider.offset.y, -0.23f);
-        animator.SetBool("isDucking", false);
+        AdjustCollider(new Vector2(0, -0.23f), normalSize, false);
+    }
+
+    private void AdjustCollider(Vector2 offset, Vector2 size, bool isDucking)
+    {
+        boxCollider.offset = offset;
+        boxCollider.size = size;
+        animator.SetBool("isDucking", isDucking);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
