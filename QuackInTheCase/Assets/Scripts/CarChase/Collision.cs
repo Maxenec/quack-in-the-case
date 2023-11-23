@@ -6,11 +6,13 @@ public class Collision : MonoBehaviour
 {
     public GameObject player;
     public GameObject manager;
+    private bool hitPlayer = false;
 
     // Start is called before the first frame update
     void Start()
     {
         //Debug.Log("Start");
+        hitPlayer = false;
     }
 
     // Update is called once per frame
@@ -22,7 +24,12 @@ public class Collision : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision){
         //Debug.Log("collide");
         if(collision.gameObject == player.gameObject){
-            manager.GetComponent<GameManager>().LoseGame();
+            hitPlayer = true;
         }
+    }
+
+    public bool HitStatus()
+    {
+        return hitPlayer;
     }
 }
