@@ -5992,6 +5992,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997385254}
   m_CullTransparentMesh: 1
+--- !u!1 &1074224095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074224096}
+  - component: {fileID: 1074224097}
+  m_Layer: 0
+  m_Name: DataPersistenceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1074224096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074224095}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1023.2059, y: 549.4977, z: 7.3572626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1074224097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074224095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc2158b3c2974ce1add77fa778b3d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: progress.json
 --- !u!1 &1088021762
 GameObject:
   m_ObjectHideFlags: 0
@@ -8796,6 +8841,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d8e5430265fda4681b7f115471b3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockedFirstEpisodeGames: 0
+  currentlyUnlockedFirstEpisodeGame: 0
   pauseMenu: {fileID: 0}
   FailMenu: {fileID: 0}
   SuccessMenu: {fileID: 0}
@@ -10654,7 +10701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2108189716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10964,3 +11011,4 @@ SceneRoots:
   - {fileID: 1636827937}
   - {fileID: 479767922}
   - {fileID: 1644711924}
+  - {fileID: 1074224096}
