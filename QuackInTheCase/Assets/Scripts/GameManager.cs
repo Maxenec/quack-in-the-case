@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public GameObject pauseMenu;
     public GameObject FailMenu;
     public GameObject SuccessMenu;
+    public GameObject dataPersistentManager;
 
     private void Start()
     {
@@ -41,9 +42,19 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void LevelWonRewards(int level)
+    public void LevelWonRewards()
     {
-        currentlyUnlockedFirstEpisodeGame = level;
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        char lastCharacter = sceneName[sceneName.Length - 1];
+
+        Debug.Log("Current level completed: " + lastCharacter);
+
+        currentlyUnlockedFirstEpisodeGame = (int.Parse(lastCharacter.ToString()) + 1);
+
+        Debug.Log("Level unlocked = " + currentlyUnlockedFirstEpisodeGame);
+
+        dataPersistentManager.GetComponent<DataPersistenceManager>().SaveGame();
     }
 
     public void ReloadScene()
@@ -105,6 +116,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             Time.timeScale = 0;
             isPaused = true;
             Debug.Log("Congragulations, you have completed this minigame.");
+            LevelWonRewards();
         }
     }
 

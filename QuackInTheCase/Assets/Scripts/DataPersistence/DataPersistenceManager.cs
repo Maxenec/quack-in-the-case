@@ -33,7 +33,9 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
+        Debug.Log("Initializing data to defaults.");
         this.gameData = new GameData();
+        SaveGame();
     }
 
     public void LoadGame()
@@ -50,7 +52,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObj.LoadData(gameData);
         }
 
-        Debug.Log("Loaded level " + gameData.firstEpisodeUnlockedGames);
+        Debug.Log("Save Progress shows you are on level " + gameData.firstEpisodeUnlockedGames);
     }
 
     public void SaveGame()
