@@ -1,16 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     private bool isPaused = false;
     private bool gameOver = false;
+    public int unlockedFirstEpisodeGames;
+    public int currentlyUnlockedFirstEpisodeGame;
     public GameObject pauseMenu;
     public GameObject FailMenu;
     public GameObject SuccessMenu;
+    public GameObject dataPersistentManager;
+
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
@@ -22,6 +27,34 @@ public class GameManager : MonoBehaviour
         {
             UnpauseGame();
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.unlockedFirstEpisodeGames = data.firstEpisodeUnlockedGames;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (currentlyUnlockedFirstEpisodeGame > unlockedFirstEpisodeGames)
+        {
+            data.firstEpisodeUnlockedGames = this.currentlyUnlockedFirstEpisodeGame;
+        }
+    }
+
+    public void LevelWonRewards()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        char lastCharacter = sceneName[sceneName.Length - 1];
+
+        Debug.Log("Current level completed: " + lastCharacter);
+
+        currentlyUnlockedFirstEpisodeGame = (int.Parse(lastCharacter.ToString()) + 1);
+
+        Debug.Log("Level unlocked = " + currentlyUnlockedFirstEpisodeGame);
+
+        dataPersistentManager.GetComponent<DataPersistenceManager>().SaveGame();
     }
 
     public void ReloadScene()
@@ -62,21 +95,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SaveGame()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        string unlocked = scene.name;
-        PlayerPrefs.SetString("Episode1", unlocked);
-        string test = PlayerPrefs.GetString("Episode 1");
-        Debug.Log(test);
-        PlayerPrefs.DeleteAll();
-    }
-
-    public void RetrieveSave()
-    {
-        
-    }
-
     public void LoseGame()
     {
         if (FailMenu != null)
@@ -98,6 +116,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             isPaused = true;
             Debug.Log("Congragulations, you have completed this minigame.");
+            LevelWonRewards();
         }
     }
 
