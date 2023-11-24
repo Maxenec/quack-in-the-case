@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleGenerator : MonoBehaviour
@@ -13,40 +11,33 @@ public class ObstacleGenerator : MonoBehaviour
         GenerateRandomObstacles();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void GenerateRandomObstacles()
     {
         int obstacleIndex = Random.Range(0, obstacles.Length);
 
-        GameObject obstaclePreFab;
+        Vector3 spawnPosition = GetSpawnPosition(obstacleIndex);
 
-        //Spawn different obstacles based on the obstacle index
-        if (obstacleIndex == 1)
-        {
-            obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -3.3f, transform.position.z), transform.rotation);
-        }
-        else if (obstacleIndex == 2)
-        {
-            obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -1.7f, transform.rotation.z), transform.rotation);
-        }
-        else if (obstacleIndex == 3)
-        {
-            obstaclePreFab = Instantiate(obstacles[obstacleIndex], new Vector3(transform.position.x, -1.3f, 0.1f), transform.rotation);
-        }
-        else
-        {
-            obstaclePreFab = Instantiate(obstacles[obstacleIndex], transform.position, transform.rotation);
-        }
+        GameObject obstaclePrefab = Instantiate(obstacles[obstacleIndex], spawnPosition, Quaternion.identity);
 
-        obstaclePreFab.GetComponent<ObstacleScript>().obstacleGenerator = this;
+        obstaclePrefab.GetComponent<ObstacleScript>().obstacleGenerator = this;
     }
 
-    public float ObsSpeed()
+    private Vector3 GetSpawnPosition(int obstacleIndex)
+    {
+        switch (obstacleIndex)
+        {
+            case 1:
+                return new Vector3(transform.position.x, -3.3f, transform.position.z);
+            case 2:
+                return new Vector3(transform.position.x, -1.7f, transform.position.z);
+            case 3:
+                return new Vector3(transform.position.x, -1.3f, 0.1f);
+            default:
+                return transform.position;
+        }
+    }
+
+    public float ObstacleSpeed()
     {
         return speed;
     }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CrosshairHandler : MonoBehaviour
@@ -20,6 +19,19 @@ public class CrosshairHandler : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(Pulse());
+    }
+
+    private void Update()
+    {
+        if (god.GetComponent<Timer>().TimerStatus())
+        {
+            if (instruction != null)
+            {
+                instruction.SetActive(false);
+            }
+
+            Destroy(gameObject);
+        }
     }
 
     private void OnMouseDown()

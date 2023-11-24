@@ -5,26 +5,29 @@ using UnityEngine;
 public class FCBackround : MonoBehaviour
 {
     private float speed = 12.0f;
+    private float resetPositionX = -19.0f;
+    private float startPositionX = 18.0f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         StartCoroutine(Move());
     }
 
-    IEnumerator Move()
+    private IEnumerator Move()
     {
-        if (transform.position.x >= -19)
+        while (true)
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
-            yield return 0;
-            StartCoroutine(Move());
-        }
-        else
-        {
-            transform.position = new Vector3(19, transform.position.y, transform.position.z);
-            yield return 0;
-            StartCoroutine(Move());
+            if (transform.position.x >= resetPositionX)
+            {
+                transform.position += Vector3.left * speed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position = new Vector3(startPositionX, transform.position.y, transform.position.z);
+            }
+
+            yield return null;
         }
     }
 }
