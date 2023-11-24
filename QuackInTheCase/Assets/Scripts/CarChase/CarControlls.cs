@@ -12,10 +12,13 @@ public class CarControlls : MonoBehaviour
     //speed the car changes lane
     private float speed = 40.0f;
 
+    //collision check
+    private bool hitOb = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        hitOb = false;
     }
 
     // Update is called once per frame
@@ -61,5 +64,18 @@ public class CarControlls : MonoBehaviour
                 leftLane = false;
             }
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision){
+        //Debug.Log("collide");
+        if(collision.gameObject.tag == "Obstacle"){
+            //Debug.Log("hit");
+            hitOb = true;
+        }
+    }
+
+    public bool HitStatus()
+    {
+        return hitOb;
     }
 }

@@ -5,13 +5,13 @@ using UnityEngine;
 public class CCLevelManager : MonoBehaviour
 {
     private bool gameOver = false;
-    public GameObject collision;
+    public GameObject player;
     public GameObject obstacleGenerator;
 
     // Start is called before the first frame update
     private void Start()
     {
-        gameObject.GetComponent<Timer>().StartTimer(15);
+        gameObject.GetComponent<Timer>().StartTimer(30);
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class CCLevelManager : MonoBehaviour
             Destroy(obstacleGenerator);
             WinLevel();
         }
-        else if (collision.GetComponent<Collision>().HitStatus())
+        else if (player.GetComponent<CarControlls>().HitStatus())
         {
             FailLevel();
         }
