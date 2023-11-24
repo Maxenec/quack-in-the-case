@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
 {
     private bool isPaused = false;
     private bool gameOver = false;
-    public int unlockedFirstEpisodeGames;
-    public int currentlyUnlockedFirstEpisodeGame;
+    private int unlockedFirstEpisodeGames;
+    private int currentlyUnlockedFirstEpisodeGame;
     public GameObject pauseMenu;
     public GameObject FailMenu;
     public GameObject SuccessMenu;
@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
         {
             UnpauseGame();
         }
+    }
+
+    public int FirstEpisode()
+    {
+        return unlockedFirstEpisodeGames;
     }
 
     public void LoadData(GameData data)
