@@ -36,7 +36,7 @@ public class HP : MonoBehaviour
             currentHP = minHP;
         }
         hpBar.value = currentHP; //sets the bar value to the hp
-        CheckHP(); //runs the checking function
+        //CheckHP(); //runs the checking function
     }
 
     public void EffectHP(int hp) //either reduces or increases the hp
@@ -49,16 +49,14 @@ public class HP : MonoBehaviour
             currentHP = minHP;
         }
         hpBar.value = currentHP; //sets the bar value to the hp
-        CheckHP(); //runs the checking function
+        //CheckHP(); //runs the checking function
     }
 
-    private void CheckHP(){// if the hp is less then or equal to the min hp then ...
+    public bool CheckHP(){
         if(currentHP <= minHP){
-            if(isPlayer){// if this is the player the lose the game
-                manager.GetComponent<GameManager>().LoseGame();
-            }else if (!isPlayer){// else if it is not the player then win the game
-                manager.GetComponent<GameManager>().WinGame();
-            }
+            return true;
+        } else{
+            return false;
         }
     }
 }
