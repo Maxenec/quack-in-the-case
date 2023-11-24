@@ -1,6 +1,6 @@
 ---
-name: Bug report
-about: Create a report to help us improve our game builds
+name: Development Bug Report
+about: Create a report to help us improve the developmental side
 title: ''
 labels: ''
 assignees: ''
