@@ -257,7 +257,6 @@ GameObject:
   - component: {fileID: 152073544}
   - component: {fileID: 152073543}
   - component: {fileID: 152073542}
-  - component: {fileID: 152073541}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -265,28 +264,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &152073541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 152073540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838fc334b70380045ad421cf1be607e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: 30
-  timerUI: {fileID: 7117369537476773667}
-  disableOnTimer: []
-  disableAfterTimer:
-  - {fileID: 172555285}
-  - {fileID: 1348757187}
-  - {fileID: 1612515924}
-  enable: []
-  manager: {fileID: 2140324988}
-  winAfter: 0
 --- !u!114 &152073542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,6 +1755,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2140324990}
   - component: {fileID: 2140324989}
+  - component: {fileID: 2140324991}
+  - component: {fileID: 2140324992}
   m_Layer: 0
   m_Name: GOD
   m_TagString: Untagged
@@ -1815,6 +1794,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2140324991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140324988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816244fed05943a43b24005dfc3cfb9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  susHP: {fileID: 110416479}
+  playerHP: {fileID: 1274658964}
+--- !u!114 &2140324992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140324988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d85b5785d5b6940f1bd703c41e536129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerUI: {fileID: 7117369537476773667}
 --- !u!1 &58469104478213893
 GameObject:
   m_ObjectHideFlags: 0
