@@ -15,7 +15,7 @@ public class FirstEpisode : MonoBehaviour
     //Check each object in the list, and if the index of the object in the list is lower than the levelsUnlocked int, enable it. Otherwise, disable it.
     public void CheckEpisodeStatus()
     {
-        levelsUnlocked = GetComponent<GameManager>().FirstEpisode() - 1;
+        levelsUnlocked = GetComponent<GameManager>().FirstEpisode();
         Debug.Log(levelsUnlocked);
 
         for (int i = 0; i < Ep1Unlockables.Count; i++)

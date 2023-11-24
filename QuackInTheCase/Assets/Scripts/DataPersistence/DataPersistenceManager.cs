@@ -35,6 +35,7 @@ public class DataPersistenceManager : MonoBehaviour
         Debug.Log("Initializing data to defaults.");
         this.gameData = new GameData();
         SaveGame();
+        LoadGame();
     }
 
     public void LoadGame()
