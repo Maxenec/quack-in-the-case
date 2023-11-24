@@ -5,6 +5,7 @@ using UnityEngine;
 public class FirstEpisode : MonoBehaviour
 {
     private int levelsUnlocked = 1;
+    private int cutscenesUnlocked = 0;
     public List<GameObject> Ep1Unlockables = new List<GameObject>();
 
     void Start()
@@ -13,14 +14,13 @@ public class FirstEpisode : MonoBehaviour
     }
 
     //Check each object in the list, and if the index of the object in the list is lower than the levelsUnlocked int, enable it. Otherwise, disable it.
-    public void CheckEpisodeStatus()
+    public void CheckEpisodeOneStatus()
     {
-        levelsUnlocked = GetComponent<GameManager>().FirstEpisode();
+        levelsUnlocked = GetComponent<GameManager>().FirstEpisode(true);
         Debug.Log(levelsUnlocked);
 
         for (int i = 0; i < Ep1Unlockables.Count; i++)
         {
-            Debug.Log("Episode " + Ep1Unlockables[i]);
             if (i < levelsUnlocked)
             {
                 Ep1Unlockables[i].SetActive(true);
@@ -30,5 +30,10 @@ public class FirstEpisode : MonoBehaviour
                 Ep1Unlockables[i].SetActive(false);
             }
         }
+    }
+
+    public void CheckCutsceneOneStatus()
+    {
+        cutscenesUnlocked = GetComponent<GameManager>().FirstEpisode(false) - 1;
     }
 }

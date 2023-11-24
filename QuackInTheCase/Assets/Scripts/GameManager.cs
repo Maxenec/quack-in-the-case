@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
     private bool gameOver = false;
     private int unlockedFirstEpisodeGames;
     private int currentlyUnlockedFirstEpisodeGame;
+    private int unlockedFirstEpisodeCutscenes;
+    private int currentlyUnlockedFirstEpisodeCutscene;
     public GameObject pauseMenu;
     public GameObject FailMenu;
     public GameObject SuccessMenu;
@@ -29,14 +31,24 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    public int FirstEpisode()
+    public int FirstEpisode(bool isMicrogame)
     {
-        return unlockedFirstEpisodeGames;
+        int i = 0;
+        if (isMicrogame)
+        {
+            i = unlockedFirstEpisodeGames;
+        }
+        else
+        {
+            i = unlockedFirstEpisodeCutscenes;
+        }
+        return i;
     }
 
     public void LoadData(GameData data)
     {
         this.unlockedFirstEpisodeGames = data.firstEpisodeUnlockedGames;
+        this.unlockedFirstEpisodeCutscenes = data.firstEpisodeUnlockedScenes;
     }
 
     public void SaveData(ref GameData data)
@@ -44,6 +56,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
         if (currentlyUnlockedFirstEpisodeGame > unlockedFirstEpisodeGames)
         {
             data.firstEpisodeUnlockedGames = this.currentlyUnlockedFirstEpisodeGame;
+        }
+
+        if (currentlyUnlockedFirstEpisodeCutscene > unlockedFirstEpisodeCutscenes)
+        {
+            data.firstEpisodeUnlockedScenes = this.currentlyUnlockedFirstEpisodeCutscene;
         }
     }
 
@@ -59,6 +76,24 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         Debug.Log("Level unlocked = " + currentlyUnlockedFirstEpisodeGame);
 
+        dataPersistentManager.GetComponent<DataPersistenceManager>().SaveGame();
+    }
+
+    public void cutsceneOver()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        switch (sceneName)
+        {
+            case "E1C2-1":
+                currentlyUnlockedFirstEpisodeCutscene = 1;
+                return;
+            case "E1C2-2":
+                currentlyUnlockedFirstEpisodeCutscene = 2;
+                break;
+            default:
+                break;
+        }
         dataPersistentManager.GetComponent<DataPersistenceManager>().SaveGame();
     }
 
