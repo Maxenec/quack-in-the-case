@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        
+        DisableUI();
     }
 
     private void Update()
@@ -179,6 +179,25 @@ public class GameManager : MonoBehaviour, IDataPersistence
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
             Debug.Log("The game has been resumed.");
+        }
+    }
+
+    private void DisableUI()
+    {
+        if (pauseMenu != null && pauseMenu.activeSelf)
+        {
+            pauseMenu.SetActive(false);
+            Debug.Log("Diabled Pause Menu");
+        }
+        if (SuccessMenu != null && SuccessMenu.activeSelf)
+        {
+            SuccessMenu.SetActive(false);
+            Debug.Log("Diabled Pass Menu");
+        }
+        if (FailMenu != null && FailMenu.activeSelf)
+        {
+            FailMenu.SetActive(false);
+            Debug.Log("Diabled Fail Menu");
         }
     }
 }
