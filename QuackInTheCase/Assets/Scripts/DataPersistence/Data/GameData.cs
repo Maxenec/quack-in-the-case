@@ -7,10 +7,12 @@ using UnityEngine;
 public class GameData
 {
     public int firstEpisodeUnlockedGames;
+    public int firstEpisodeUnlockedScenes;
 
     public GameData()
     {
         this.firstEpisodeUnlockedGames = 1;
+        this.firstEpisodeUnlockedScenes = 0;
     }
 
 }
