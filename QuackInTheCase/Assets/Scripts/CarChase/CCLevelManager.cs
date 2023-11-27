@@ -11,7 +11,7 @@ public class CCLevelManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        gameObject.GetComponent<Timer>().StartTimer(30);
+        gameObject.GetComponent<Timer>().StartTimer(20);
     }
 
     // Update is called once per frame
