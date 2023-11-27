@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -31,7 +30,7 @@ public class Timer : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             timer -= 1.0f;
             timerUI.text = timer.ToString();
-            Debug.Log("Time left: " + ((int)timer));
+            //Debug.Log("Time left: " + ((int)timer));
         }
         Debug.Log("Time is up.");
         timesUp = true;

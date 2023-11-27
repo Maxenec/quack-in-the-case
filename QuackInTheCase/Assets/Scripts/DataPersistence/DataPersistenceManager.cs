@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -27,7 +28,11 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.DataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        this.gameData = dataHandler.Load();
+        if (SceneManager.GetActiveScene().name == "MenuScreen")
+        {
+            LoadGame();
+        }
     }
 
     public void NewGame()
