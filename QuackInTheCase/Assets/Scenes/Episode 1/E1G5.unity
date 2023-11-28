@@ -1435,8 +1435,8 @@ MonoBehaviour:
     pigeonSelectionImage: {fileID: 0}
     catSelectionImage: {fileID: 0}
   - question: Identify the hat worn by the mastermind
-    pigeonImage: {fileID: 21300000, guid: 518945ae1f0300240a3cad915a165e15, type: 3}
-    catImage: {fileID: 0}
+    pigeonImage: {fileID: 21300000, guid: 52a580c8d6d704e0a8dbbfeabed4286e, type: 3}
+    catImage: {fileID: 21300000, guid: 4c407a01ae6fe4aedac0e514dade61ea, type: 3}
     pigeonSelectionImage: {fileID: 0}
     catSelectionImage: {fileID: 0}
   - question: 'Identify the glasses from the evidence collection '
