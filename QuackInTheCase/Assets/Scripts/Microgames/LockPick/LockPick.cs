@@ -14,6 +14,7 @@ public class LockPick : MonoBehaviour
     private Vector3 target;
     public GameObject god;
     public ParticleSystem ps;
+    private Color particleColor;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class LockPick : MonoBehaviour
         spriteRenderer.sprite = pickSpriteArray[0];
         isBroken = false;
         canClick = true;
+        particleColor = new Color (0, 1, 0, 0.5f);
     }
 
     // Update is called once per frame
@@ -31,19 +33,29 @@ public class LockPick : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && canClick && !god.GetComponent<GameManager>().IsPaused()){
             CheckColour();
         }
+        var main = ps.main;
+        main.startColor = particleColor;
     }
 
     private void CheckColour(){
         switch(indicator.GetComponent<PickIndicator>().GetColour()){
             case 1:
+                particleColor = new Color (0, 1, 0, 0.5f);
+                ps.Play();
                 Push();
                 break;
             case 2:
+                particleColor = new Color (1, 1, 0, 0.5f);
+                ps.Play();
                 break;
             case 3:
+                particleColor = new Color (1, 0.647f, 0, 0.5f);
+                ps.Play();
                 Fall();
                 break;
             case 4:
+                particleColor = new Color (1, 0, 0, 0.5f);
+                ps.Play();
                 Snap();
                 break;
             case 0:
