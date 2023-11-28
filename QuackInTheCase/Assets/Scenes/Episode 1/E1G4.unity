@@ -1565,6 +1565,7 @@ MonoBehaviour:
   suspect: {fileID: 110416479}
   shield: {fileID: 172555285}
   myPos: {fileID: 934821147}
+  god: {fileID: 2140324988}
   strength: 25
   coolDown: 2
   blocking: 0
