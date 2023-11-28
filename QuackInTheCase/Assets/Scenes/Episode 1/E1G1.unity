@@ -838,6 +838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftLanePos: {fileID: 769526526}
   rightLanePos: {fileID: 1467540458}
+  god: {fileID: 1616916108}
 --- !u!50 &639242861
 Rigidbody2D:
   serializedVersion: 4

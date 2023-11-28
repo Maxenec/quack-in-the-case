@@ -7,6 +7,7 @@ public class CarControlls : MonoBehaviour
     //referneces to empty game objects that indicate the lane posisions
     public GameObject leftLanePos;
     public GameObject rightLanePos;
+    public GameObject god;
     //what lane is the car currntly in?
     private bool leftLane = true;
     //speed the car changes lane
@@ -25,12 +26,12 @@ public class CarControlls : MonoBehaviour
     void Update()
     {
         //left arrow key
-        if (Input.GetKeyDown("left")){
+        if (Input.GetKeyDown("left") && !god.GetComponent<GameManager>().IsPaused()){
             //print("left arrow");
             StartCoroutine(Left());
         }
         //right arrow key
-        if (Input.GetKeyDown("right")){
+        if (Input.GetKeyDown("right") && !god.GetComponent<GameManager>().IsPaused()){
             //print("right arrow");
             StartCoroutine(Right());
         }
