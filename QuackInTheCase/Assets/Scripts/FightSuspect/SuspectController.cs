@@ -60,7 +60,7 @@ public class SuspectController : MonoBehaviour
             }
             if (state == 0){//if it picks the idle state then it runs the idle function and starts this function again
                 Idle();
-                yield return null;
+                ;
             }
             else if (state == 1){//if it picks the block state then it runs the block function and starts this function again
                 Block();
