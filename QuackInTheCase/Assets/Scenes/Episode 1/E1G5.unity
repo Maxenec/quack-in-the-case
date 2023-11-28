@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7214311, g: 0.79245275, b: 0.7924528, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1273,16 +1273,16 @@ MonoBehaviour:
   questions:
   - ID: 0
     question: Identify the car driven by the rabbit
-    pigeonImage: {fileID: 21300000, guid: 518945ae1f0300240a3cad915a165e15, type: 3}
-    catImage: {fileID: 0}
+    pigeonImage: {fileID: 21300000, guid: b2ec71171ab964c65a11012fafe435e9, type: 3}
+    catImage: {fileID: 21300000, guid: 4b594f0384f14474089ea46fd8c90f7f, type: 3}
   - ID: 1
-    question: 'Identify the glasses from the evidence collection '
-    pigeonImage: {fileID: 21300000, guid: 518945ae1f0300240a3cad915a165e15, type: 3}
-    catImage: {fileID: 0}
-  - ID: 2
     question: Identify the hat worn by the mastermind
     pigeonImage: {fileID: 21300000, guid: 518945ae1f0300240a3cad915a165e15, type: 3}
     catImage: {fileID: 0}
+  - ID: 2
+    question: 'Identify the glasses from the evidence collection '
+    pigeonImage: {fileID: 21300000, guid: 6a41600d0b3b8486091f824dde3c7253, type: 3}
+    catImage: {fileID: 21300000, guid: d87e083bdd83b4fcfa91357820058f77, type: 3}
   caLevelManager: {fileID: 0}
 --- !u!1 &1277409949
 GameObject:
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7214311, g: 0.79245275, b: 0.7924528, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
