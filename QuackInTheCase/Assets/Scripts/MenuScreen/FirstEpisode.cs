@@ -17,7 +17,7 @@ public class FirstEpisode : MonoBehaviour
     public void CheckEpisodeOneStatus()
     {
         levelsUnlocked = GetComponent<GameManager>().FirstEpisode(true);
-        Debug.Log(levelsUnlocked);
+        Debug.Log("Levels unlocked: " + levelsUnlocked);
 
         for (int i = 0; i < Ep1Unlockables.Count; i++)
         {

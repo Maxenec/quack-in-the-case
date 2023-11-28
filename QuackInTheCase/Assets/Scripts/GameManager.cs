@@ -182,6 +182,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    public bool IsPaused()
+    {
+        return isPaused;
+    }
+
     private void DisableUI()
     {
         if (pauseMenu != null && pauseMenu.activeSelf)

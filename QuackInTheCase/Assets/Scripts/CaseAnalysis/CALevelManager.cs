@@ -1,19 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
+using TMPro;
 
 public class CALevelManager : MonoBehaviour
 {
     public Timer timer;
+    public TMP_Text questionText;
     private GameManager gameManager;
-    public int totalRounds = 3;
+    private QuestionManager questionManager;
+    private float winDelay = 2;
     private bool gameOver = false;
 
     private void Awake()
     {
         timer = GetComponent<Timer>();
         gameManager = GetComponent<GameManager>();
+        questionManager = GetComponent<QuestionManager>();
     }
 
     private void Start()
@@ -32,7 +34,7 @@ public class CALevelManager : MonoBehaviour
     public void SelectedSuccessfully()
     {
         timer.StopTimer();
-        gameManager.WinGame();
+        StartCoroutine(GameWinDelay());
     }
 
     private void CheckGameStatus()
@@ -42,5 +44,25 @@ public class CALevelManager : MonoBehaviour
             gameOver = true;
             gameManager.LoseGame();
         }
+    }
+
+    private IEnumerator GameWinDelay()
+    {
+        if (questionManager.DidPigeonWin())
+        {
+            questionText.text = "It's the bloody pigeon?!";
+        }
+        else
+        {
+            questionText.text = "It's the bloody cat?!";
+        }
+
+        while (winDelay > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            winDelay -= 1.0f;
+
+        }
+        gameManager.WinGame();
     }
 }
