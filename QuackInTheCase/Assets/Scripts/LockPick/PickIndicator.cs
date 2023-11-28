@@ -26,7 +26,7 @@ public class PickIndicator : MonoBehaviour
     }
 
     IEnumerator Move(bool left){
-        transform.position = Vector3.MoveTowards (transform.position, target, 0.5f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards (transform.position, target, 2f * Time.deltaTime);
         if (transform.position.x == target.x && !left){
             target = leftEdge.transform.position;
             left = true;
@@ -44,20 +44,29 @@ public class PickIndicator : MonoBehaviour
     {
         switch(collision.gameObject.name){
             case "Green":
-                print("Green");
+                //Debug.Log("Green");
+                currentColour = 1;
                 break;
             case "Yellow":
-                print("Yellow");
+                //Debug.Log("Yellow");
+                currentColour = 2;
                 break;
             case "Orange":
-                print("Orange");
+                //Debug.Log("Orange");
+                currentColour = 3;
                 break;
             case "Red":
-                print("Red");
+                //Debug.Log("Red");
+                currentColour = 4;
                 break;
             default:
-                print("No Colour");
+                //Debug.Log("No Colour");
+                currentColour = 0;
                 break;
         }
+    }
+
+    public int GetColour(){
+        return currentColour;
     }
 }

@@ -19,9 +19,7 @@ public class LockPins : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)){
-            ChangeSprite();
-        }
+
     }
 
     public void ChangeSprite(){
@@ -32,5 +30,9 @@ public class LockPins : MonoBehaviour
             spriteRenderer.sprite = pinSpriteArray[0];
             isUp = false;
         }
+    }
+
+    public bool CheckStatus(){
+        return isUp;
     }
 }
