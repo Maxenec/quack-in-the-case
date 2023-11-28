@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public GameObject suspect;
     public GameObject shield;
     public GameObject myPos;
+    public GameObject god;
     private Vector3 target;
     public int strength = 25;
     public float coolDown = 2f;
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void LeftClick(){ //when the left mouse button is clicked, if it is not blocking or attacking and it can attack the it attacks the suspect
-        if (myHP != null && !blocking && !attacking && canAttack){
+        if (myHP != null && !blocking && !attacking && canAttack && !god.GetComponent<GameManager>().IsPaused()){
             attacking = true;
             target = suspect.transform.position;
             StartCoroutine(Punch(false));
@@ -54,14 +55,14 @@ public class PlayerController : MonoBehaviour
     }
 
     public void RightClickDown(){ //when the right mouse button is pressed down, if it is not blocking or attacking, it blocks
-        if (myHP != null && !blocking && !attacking){
+        if (myHP != null && !blocking && !attacking && !god.GetComponent<GameManager>().IsPaused()){
             blocking = true;
             shield.SetActive(true);
         }
     }
 
     public void RightClickUp(){ //when the right button is relesed it stops blocking
-        if (myHP != null && blocking && !attacking){
+        if (myHP != null && blocking && !attacking && !god.GetComponent<GameManager>().IsPaused()){
             blocking = false;
             shield.SetActive(false);
         }
