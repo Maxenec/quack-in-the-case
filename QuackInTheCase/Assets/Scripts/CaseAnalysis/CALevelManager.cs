@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
 
 public class CALevelManager : MonoBehaviour
 {
     public Timer timer;
     private GameManager gameManager;
     public int totalRounds = 3;
+    private float winDelay = 2;
     private bool gameOver = false;
 
     private void Awake()
@@ -18,7 +17,7 @@ public class CALevelManager : MonoBehaviour
 
     private void Start()
     {
-        timer.StartTimer(20);
+        timer.StartTimer(10);
     }
 
     void Update()
@@ -32,7 +31,7 @@ public class CALevelManager : MonoBehaviour
     public void SelectedSuccessfully()
     {
         timer.StopTimer();
-        gameManager.WinGame();
+        StartCoroutine(GameWinDelay());
     }
 
     private void CheckGameStatus()
@@ -42,5 +41,16 @@ public class CALevelManager : MonoBehaviour
             gameOver = true;
             gameManager.LoseGame();
         }
+    }
+
+    private IEnumerator GameWinDelay()
+    {
+        while (winDelay > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            winDelay -= 1.0f;
+
+        }
+        gameManager.WinGame();
     }
 }

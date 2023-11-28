@@ -14,14 +14,17 @@ public class Question
 public class QuestionManager : MonoBehaviour
 {
     private int currentQuestionIndex = 0;
+    private int catPoints = 0;
+    private int pigeonPoints = 0;
     public TMP_Text questionText;
     public TMP_Text consequenceText;
+    public TMP_Text pigeonPointsText;
+    public TMP_Text catPointsText;
     public Button firstOption;
     public Button secondOption;
     public Question[] questions;
     public CALevelManager caLevelManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         caLevelManager = GetComponent<CALevelManager>();
@@ -60,13 +63,17 @@ public class QuestionManager : MonoBehaviour
 
     public void CatAnswer()
     {
+        catPoints++;
         Debug.Log("Cat Recieves a point.");
+        catPointsText.text = catPoints.ToString();
         setQuestion();
     }
 
     public void PigeonAnswer()
     {
+        pigeonPoints++;
         Debug.Log("Pigeon Recieves a point.");
+        pigeonPointsText.text = pigeonPoints.ToString();
         setQuestion();
     }
 
