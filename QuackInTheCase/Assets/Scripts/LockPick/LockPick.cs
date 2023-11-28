@@ -12,6 +12,7 @@ public class LockPick : MonoBehaviour
     public List<GameObject> lockPins;
     private bool canClick = true;
     private Vector3 target;
+    public GameObject god;
     public ParticleSystem ps;
 
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class LockPick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && canClick){
+        if(Input.GetMouseButtonDown(0) && canClick && !god.GetComponent<GameManager>().IsPaused()){
             CheckColour();
         }
     }

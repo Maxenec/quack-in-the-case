@@ -2433,7 +2433,8 @@ MonoBehaviour:
   - {fileID: 1282193392}
   - {fileID: 1660500211}
   - {fileID: 2063852692}
-  ps: {fileID: 0}
+  god: {fileID: 1538517330}
+  ps: {fileID: 1988175825}
 --- !u!1 &1976608485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,7 +2708,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
