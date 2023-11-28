@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class CALevelManager : MonoBehaviour
 {
     public Timer timer;
+    public TMP_Text questionText;
     private GameManager gameManager;
-    public int totalRounds = 3;
+    private QuestionManager questionManager;
     private float winDelay = 2;
     private bool gameOver = false;
 
@@ -13,11 +15,12 @@ public class CALevelManager : MonoBehaviour
     {
         timer = GetComponent<Timer>();
         gameManager = GetComponent<GameManager>();
+        questionManager = GetComponent<QuestionManager>();
     }
 
     private void Start()
     {
-        timer.StartTimer(10);
+        timer.StartTimer(20);
     }
 
     void Update()
@@ -45,6 +48,15 @@ public class CALevelManager : MonoBehaviour
 
     private IEnumerator GameWinDelay()
     {
+        if (questionManager.DidPigeonWin())
+        {
+            questionText.text = "It's the bloody pigeon?!";
+        }
+        else
+        {
+            questionText.text = "It's the bloody cat?!";
+        }
+
         while (winDelay > 0)
         {
             yield return new WaitForSeconds(1.0f);
