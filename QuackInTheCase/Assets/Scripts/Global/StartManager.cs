@@ -1,17 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StartManager : MonoBehaviour
 {
-    private float delay = 3;
+    private float delay = 3f;
     public GameObject game;
+    public GameObject instructions;
 
 
     private void Awake()
     {
         game.SetActive(false);
-        
+        instructions.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -27,6 +27,7 @@ public class StartManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             delay -= 1.0f;
         }
+        instructions.SetActive(false);
         game.SetActive(true);
     }
 }
