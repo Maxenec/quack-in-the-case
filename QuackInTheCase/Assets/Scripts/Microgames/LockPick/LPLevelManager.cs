@@ -33,16 +33,13 @@ public class LPLevelManager : MonoBehaviour
             }
         }
 
-        //Debug.Log(pinsUp);
         if (gameObject.GetComponent<Timer>().TimerStatus())
         {
             FailLevel();
         } else if (lockPick.GetComponent<LockPick>().CheckStatus()){
-            //Debug.Log("ded");
             FailLevel();
         } else if(pinsUp >= lockPins.Count){
             WinLevel();
-            //Debug.Log("win");
         }
     }
 

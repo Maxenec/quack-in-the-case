@@ -39,12 +39,12 @@ public class CCLevelManager : MonoBehaviour
     private void WinLevel()
     {
         gameOver = true;
-        gameObject.GetComponent<GameManager>().WinGame();
+            gameObject.GetComponent<GameManager>().WinGame();
     }
 
     private void FailLevel()
     {
         gameOver = true;
-        gameObject.GetComponent<GameManager>().LoseGame();
+            gameObject.GetComponent<GameManager>().LoseGame();
     }
 }
