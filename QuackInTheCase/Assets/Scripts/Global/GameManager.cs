@@ -72,7 +72,14 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         Debug.Log("Current level completed: " + lastCharacter);
 
-        currentlyUnlockedFirstEpisodeGame = (int.Parse(lastCharacter.ToString()) + 1);
+        if (int.Parse(lastCharacter.ToString()) < 6)
+        {
+            currentlyUnlockedFirstEpisodeGame = (int.Parse(lastCharacter.ToString()) + 1);
+        }
+        else
+        {
+            currentlyUnlockedFirstEpisodeCutscene = (2);
+        }
 
         Debug.Log("Level unlocked = " + currentlyUnlockedFirstEpisodeGame);
 

@@ -7,6 +7,7 @@ public class FirstEpisode : MonoBehaviour
     private int levelsUnlocked = 1;
     private int cutscenesUnlocked = 0;
     public List<GameObject> Ep1Unlockables = new List<GameObject>();
+    public List<GameObject> Ep1Cutscenes = new List<GameObject>();
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class FirstEpisode : MonoBehaviour
     public void CheckEpisodeOneStatus()
     {
         levelsUnlocked = GetComponent<GameManager>().FirstEpisode(true);
+        cutscenesUnlocked = GetComponent<GameManager>().FirstEpisode(false);
         Debug.Log("Levels unlocked: " + levelsUnlocked);
 
         for (int i = 0; i < Ep1Unlockables.Count; i++)
@@ -28,6 +30,18 @@ public class FirstEpisode : MonoBehaviour
             else
             {
                 Ep1Unlockables[i].SetActive(false);
+            }
+        }
+
+        for (int i = 0; i < Ep1Cutscenes.Count; i++)
+        {
+            if (i < cutscenesUnlocked)
+            {
+                Ep1Cutscenes[i].SetActive(true);
+            }
+            else
+            {
+                Ep1Cutscenes[i].SetActive(false);
             }
         }
     }
