@@ -1738,7 +1738,7 @@ GameObject:
   - component: {fileID: 1538517331}
   - component: {fileID: 1538517334}
   m_Layer: 0
-  m_Name: GOD
+  m_Name: God
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1807,6 +1807,7 @@ MonoBehaviour:
   - {fileID: 1282193392}
   - {fileID: 1660500211}
   - {fileID: 2063852692}
+  arcadeManager: {fileID: 0}
 --- !u!1 &1592309263 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8614636347822399181, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
