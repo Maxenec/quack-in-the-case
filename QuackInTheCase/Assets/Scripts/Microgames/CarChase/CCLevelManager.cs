@@ -7,10 +7,14 @@ public class CCLevelManager : MonoBehaviour
     private bool gameOver = false;
     public GameObject player;
     public GameObject obstacleGenerator;
+    private GameObject arcadeManager;
 
     // Start is called before the first frame update
     private void Start()
     {
+        if(GameObject.Find("ArcadeManager") != null){
+            arcadeManager = GameObject.Find("ArcadeManager");
+        }
         gameObject.GetComponent<Timer>().StartTimer(20);
     }
 
@@ -39,12 +43,20 @@ public class CCLevelManager : MonoBehaviour
     private void WinLevel()
     {
         gameOver = true;
-        gameObject.GetComponent<GameManager>().WinGame();
+        if(arcadeManager != null){
+            arcadeManager.GetComponent<ArcadeMode>().ArcadeButton();
+        }else{
+            gameObject.GetComponent<GameManager>().WinGame();
+        }
     }
 
     private void FailLevel()
     {
         gameOver = true;
-        gameObject.GetComponent<GameManager>().LoseGame();
+        if(arcadeManager != null){
+            arcadeManager.GetComponent<ArcadeMode>().ArcadeFail();
+        }else{
+            gameObject.GetComponent<GameManager>().LoseGame();
+        }
     }
 }
