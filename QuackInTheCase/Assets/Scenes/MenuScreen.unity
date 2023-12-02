@@ -9185,7 +9185,9 @@ MonoBehaviour:
   - {fileID: 1562475195}
   - {fileID: 64707810}
   - {fileID: 655091298}
-  - {fileID: 1904888804}
+  Ep1Cutscenes:
+  - {fileID: 958938433}
+  - {fileID: 2048900137}
 --- !u!1 &1674426426
 GameObject:
   m_ObjectHideFlags: 0
