@@ -12,10 +12,10 @@ public class ArcadeMode : MonoBehaviour
     void Start()
     {
         unlockedLevels.Add("E1G1");
-        //unlockedLevels.Add("E1G2");
-        //unlockedLevels.Add("E1G3");
+        unlockedLevels.Add("E1G2");
+        unlockedLevels.Add("E1G3");
         unlockedLevels.Add("E1G4");
-        //unlockedLevels.Add("E1G5");
+        unlockedLevels.Add("E1G5");
         unlockedLevels.Add("E1G6");
     }
 
@@ -30,10 +30,5 @@ public class ArcadeMode : MonoBehaviour
     public void ArcadeButton(){
         DontDestroyOnLoad(this.gameObject);
         god.GetComponent<GameManager>().SwitchScene(unlockedLevels[Random.Range(0,unlockedLevels.Count)]);
-    }
-
-    public void ArcadeFail(){
-        god.GetComponent<GameManager>().QuitToMenu();
-        Destroy(this.gameObject);
     }
 }

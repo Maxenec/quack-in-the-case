@@ -13,10 +13,15 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public GameObject FailMenu;
     public GameObject SuccessMenu;
     public GameObject dataPersistentManager;
+    public GameObject arcadeManager;
 
     private void Start()
     {
         DisableUI();
+
+        if(GameObject.Find("ArcadeManager") != null){
+            arcadeManager = GameObject.Find("ArcadeManager");
+        }
     }
 
     private void Update()
@@ -134,6 +139,10 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public void QuitToMenu()
     {
+        if(arcadeManager != null)
+        {
+            Destroy(arcadeManager.gameObject);
+        }
         SceneManager.LoadScene(0);
         if (isPaused)
         {
@@ -144,7 +153,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public void LoseGame()
     {
-        if (FailMenu != null)
+        if(arcadeManager != null){
+            QuitToMenu();
+        }else if (FailMenu != null)
         {
             gameOver = true;
             FailMenu.SetActive(true);
@@ -156,7 +167,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public void WinGame()
     {
-        if (SuccessMenu != null)
+        if(arcadeManager != null){
+            arcadeManager.GetComponent<ArcadeMode>().ArcadeButton();
+        }else if (SuccessMenu != null)
         {
             gameOver = true;
             SuccessMenu.SetActive(true);
