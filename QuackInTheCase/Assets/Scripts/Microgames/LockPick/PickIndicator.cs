@@ -26,7 +26,7 @@ public class PickIndicator : MonoBehaviour
     }
 
     IEnumerator Move(bool left){
-        transform.position = Vector3.MoveTowards (transform.position, target, 2f * Time.deltaTime); //default speed = 8, testing speed = 2
+        transform.position = Vector3.MoveTowards (transform.position, target, 8f * Time.deltaTime); //default speed = 8, testing speed = 2
         if (transform.position.x == target.x && !left){
             target = leftEdge.transform.position;
             left = true;
