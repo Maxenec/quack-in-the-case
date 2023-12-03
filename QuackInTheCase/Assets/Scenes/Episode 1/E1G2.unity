@@ -1405,6 +1405,7 @@ MonoBehaviour:
   FailMenu: {fileID: 643019786}
   SuccessMenu: {fileID: 232712995}
   dataPersistentManager: {fileID: 818682406}
+  arcadeManager: {fileID: 0}
 --- !u!114 &1305810105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7060,6 +7061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8614636347822399181, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9030269258074622806, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7201,6 +7206,10 @@ PrefabInstance:
     - target: {fileID: 8500360316318297967, guid: 17b93dea74e6e8144b6190cc4c0bc939, type: 3}
       propertyPath: m_Name
       value: FailScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500360316318297967, guid: 17b93dea74e6e8144b6190cc4c0bc939, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8955121955054551568, guid: 17b93dea74e6e8144b6190cc4c0bc939, type: 3}
       propertyPath: m_Pivot.x

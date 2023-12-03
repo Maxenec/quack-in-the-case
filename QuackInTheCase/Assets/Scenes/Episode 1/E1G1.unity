@@ -1430,14 +1430,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8514461773961110433}
     m_Modifications:
-    - target: {fileID: 4529108759249701188, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1616916109}
-    - target: {fileID: 4529108759249701188, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UnpauseGame
-      objectReference: {fileID: 0}
     - target: {fileID: 7824921468735470370, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1518,37 +1510,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8247192645903313970, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1616916109}
-    - target: {fileID: 8247192645903313970, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UnpauseGame
-      objectReference: {fileID: 0}
     - target: {fileID: 8614636347822399181, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
       propertyPath: m_Name
       value: PauseScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614636347822399181, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9030269258074622806, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1616916109}
-    - target: {fileID: 9030269258074622806, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReloadScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 9070055055580875468, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1616916109}
-    - target: {fileID: 9070055055580875468, guid: bde5d99fdf4e57447901a3e6f8d3e2b5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitToMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2046,6 +2010,7 @@ MonoBehaviour:
   FailMenu: {fileID: 968787508}
   SuccessMenu: {fileID: 1335989729}
   dataPersistentManager: {fileID: 603920629}
+  arcadeManager: {fileID: 0}
 --- !u!4 &1616916110
 Transform:
   m_ObjectHideFlags: 0
