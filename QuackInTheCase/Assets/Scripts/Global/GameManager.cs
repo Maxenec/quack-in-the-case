@@ -249,7 +249,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    private void ButtonClick()
+    public void ButtonClick()
     {
         clickSoundEffect.Play();
     }

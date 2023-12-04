@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CreditsAnimation : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class CreditsAnimation : MonoBehaviour
     private float speed;
     private bool rollCredits = false;
     private Vector3 initialPosition = new Vector3(0f, -1000f, 0f);
+
+    [SerializeField] private AudioSource BGMusic;
 
     void Update()
     {
@@ -33,8 +36,14 @@ public class CreditsAnimation : MonoBehaviour
 
     public void SetCredits()
     {
-        rollCredits = false;
+        BGMusic.Stop();
         GetComponent<RectTransform>().anchoredPosition = initialPosition;
         StartCoroutine(Delay());
+    }
+
+    public void StopCredits()
+    {
+        rollCredits = false;
+        BGMusic.Play();
     }
 }
