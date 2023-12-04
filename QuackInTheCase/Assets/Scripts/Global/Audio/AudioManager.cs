@@ -11,6 +11,9 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource, sfxSource;
 
     private string bgMusic;
+    private const string musicVolumeKey = "MusicVolume";
+    private const string sfxVolumeKey = "MusicVolume";
+
 
     private void Awake()
     {
@@ -80,4 +83,29 @@ public class AudioManager : MonoBehaviour
             Debug.Log("SFX audio missing.");
         }
     }
+
+    //To turn off and on the sounds from player end.
+    public void ToggleMusic()
+    {
+        musicSource.mute = !musicSource.mute;
+    }
+
+    public void ToggleSFX()
+    {
+        sfxSource.mute = !sfxSource.mute;
+    }
+
+    public void MusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+        PlayerPrefs.SetFloat(musicVolumeKey, volume);
+    }
+
+    public void SFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
+        PlayerPrefs.SetFloat(sfxVolumeKey, volume);
+    }
+
+    
 }
