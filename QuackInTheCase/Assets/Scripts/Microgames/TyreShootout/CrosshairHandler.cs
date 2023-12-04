@@ -15,6 +15,8 @@ public class CrosshairHandler : MonoBehaviour
     public GameObject instruction;
     public GameObject god;
 
+    [SerializeField] private AudioSource shootSFX;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -64,6 +66,10 @@ public class CrosshairHandler : MonoBehaviour
 
     private void OnMouseUp()
     {
+        shootSFX.Play();
+        Color disappear = GetComponent<SpriteRenderer>().color;
+        disappear.a = 0;
+        GetComponent<SpriteRenderer>().color = disappear;
         CheckCollision();
     }
 
@@ -85,7 +91,6 @@ public class CrosshairHandler : MonoBehaviour
             Debug.Log("Collision unsuccessful with Tyres.");
             god.GetComponent<LevelManager>().FailAnimation();
         }
-        Destroy(gameObject);
     }
 
     IEnumerator Pulse()

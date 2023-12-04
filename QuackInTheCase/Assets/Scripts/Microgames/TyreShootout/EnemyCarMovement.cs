@@ -33,7 +33,6 @@ public class EnemyCarMovement : MonoBehaviour
 
     void SetRandomStartPosition()
     {
-        //Set the initial position of the square to a random x-value within the defined edges.
         float randomX = Random.Range(leftEdge, rightEdge);
         Vector3 startPosition = new Vector3(randomX, transform.position.y, transform.position.z);
         transform.position = startPosition;
