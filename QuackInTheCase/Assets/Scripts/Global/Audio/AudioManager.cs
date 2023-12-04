@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 
     private string bgMusic;
     private const string musicVolumeKey = "MusicVolume";
-    private const string sfxVolumeKey = "MusicVolume";
+    private const string sfxVolumeKey = "SFXVolume";
 
 
     private void Awake()
@@ -25,7 +25,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        
+        MusicVolume(SavedMusicVolume());
+        SFXVolume(SavedSFXVolume());
     }
 
     public void PlayMusic(string name)
@@ -84,28 +85,27 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    //To turn off and on the sounds from player end.
-    public void ToggleMusic()
-    {
-        musicSource.mute = !musicSource.mute;
-    }
-
-    public void ToggleSFX()
-    {
-        sfxSource.mute = !sfxSource.mute;
-    }
-
     public void MusicVolume(float volume)
     {
         musicSource.volume = volume;
         PlayerPrefs.SetFloat(musicVolumeKey, volume);
+        PlayerPrefs.Save();
     }
 
     public void SFXVolume(float volume)
     {
         sfxSource.volume = volume;
         PlayerPrefs.SetFloat(sfxVolumeKey, volume);
+        PlayerPrefs.Save();
     }
 
-    
+    public float SavedMusicVolume()
+    {
+        return PlayerPrefs.GetFloat(musicVolumeKey, 1.0f);
+    }
+
+    public float SavedSFXVolume()
+    {
+        return PlayerPrefs.GetFloat(sfxVolumeKey, 1.0f);
+    }
 }
