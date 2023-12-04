@@ -15,8 +15,6 @@ public class CrosshairHandler : MonoBehaviour
     public GameObject instruction;
     public GameObject god;
 
-    [SerializeField] private AudioSource shootSFX;
-
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -66,7 +64,7 @@ public class CrosshairHandler : MonoBehaviour
 
     private void OnMouseUp()
     {
-        shootSFX.Play();
+        AudioManager.Instance.PlaySFX("GunShot");
         Color disappear = GetComponent<SpriteRenderer>().color;
         disappear.a = 0;
         GetComponent<SpriteRenderer>().color = disappear;

@@ -9,8 +9,6 @@ public class CreditsAnimation : MonoBehaviour
     private bool rollCredits = false;
     private Vector3 initialPosition = new Vector3(0f, -1000f, 0f);
 
-    [SerializeField] private AudioSource BGMusic;
-
     void Update()
     {
         if (rollCredits)
@@ -36,14 +34,14 @@ public class CreditsAnimation : MonoBehaviour
 
     public void SetCredits()
     {
-        BGMusic.Stop();
+        AudioManager.Instance.StopMusic();
         GetComponent<RectTransform>().anchoredPosition = initialPosition;
         StartCoroutine(Delay());
     }
 
     public void StopCredits()
     {
+        AudioManager.Instance.PlayMusic("MenuMusic");
         rollCredits = false;
-        BGMusic.Play();
     }
 }

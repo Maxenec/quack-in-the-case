@@ -15,10 +15,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public GameObject dataPersistentManager;
     public GameObject arcadeManager;
 
-    [SerializeField] private AudioSource failSoundEffect;
-    [SerializeField] private AudioSource passSoundEffect;
     [SerializeField] private AudioSource clickSoundEffect;
-    [SerializeField] private AudioSource BGMusic;
 
     private void Awake()
     {
@@ -32,6 +29,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
         if (GameObject.Find("ArcadeManager") != null)
         {
             arcadeManager = GameObject.Find("ArcadeManager");
+        }
+
+        if (SceneManager.GetActiveScene().name == "MenuScreen")
+        {
+            Debug.Log("Menu Screen music activated.");
+            AudioManager.Instance.PlayMusic("MenuMusic");
         }
     }
 
@@ -173,7 +176,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             gameOver = true;
             FailMenu.SetActive(true);
             StopBGMusic();
-            failSoundEffect.Play();
+            AudioManager.Instance.PlaySFX("GameFail");
             Time.timeScale = 0;
             isPaused = true;
             Debug.Log("You have failed the game.");
@@ -189,7 +192,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             gameOver = true;
             SuccessMenu.SetActive(true);
             StopBGMusic();
-            passSoundEffect.Play();
+            AudioManager.Instance.PlaySFX("GameWin");
             Time.timeScale = 0;
             isPaused = true;
             Debug.Log("Congragulations, you have completed this minigame.");
@@ -203,7 +206,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         {
             isPaused = true;
             pauseMenu.SetActive(true);
-            StopBGMusic();
+            PauseBGMusic();
             Time.timeScale = 0;
             Debug.Log("The game is now paused.");
         }
@@ -256,11 +259,16 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     private void StopBGMusic()
     {
-        BGMusic.Pause();
+        AudioManager.Instance.StopMusic();
+    }
+
+    private void PauseBGMusic()
+    {
+        AudioManager.Instance.PauseMusic();
     }
 
     private void ResumeBGMusic()
     {
-        BGMusic.Play();
+        AudioManager.Instance.ResumeMusic();
     }
 }

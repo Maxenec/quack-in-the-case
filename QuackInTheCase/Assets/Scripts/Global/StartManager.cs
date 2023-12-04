@@ -4,6 +4,7 @@ using UnityEngine;
 public class StartManager : MonoBehaviour
 {
     private float delay = 3f;
+    public string musicToPlay;
     public GameObject game;
     public GameObject instructions;
 
@@ -17,6 +18,7 @@ public class StartManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MusicPlayer();
         StartCoroutine(DelayStart());
     }
 
@@ -29,5 +31,10 @@ public class StartManager : MonoBehaviour
         }
         instructions.SetActive(false);
         game.SetActive(true);
+    }
+
+    public void MusicPlayer()
+    {
+        AudioManager.Instance.PlayMusic(musicToPlay);
     }
 }
