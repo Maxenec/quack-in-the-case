@@ -15,6 +15,8 @@ public class PlayerRunController : MonoBehaviour
     private Vector2 normalSize;
     private Vector2 duckingSize;
 
+    [SerializeField] private AudioSource jumpSoundEffect;
+
     private void Awake()
     {
         InitializeColliders();
@@ -61,6 +63,7 @@ public class PlayerRunController : MonoBehaviour
             Stand();
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+            jumpSoundEffect.Play();
         }
         else
         {

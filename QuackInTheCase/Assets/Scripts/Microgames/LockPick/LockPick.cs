@@ -30,7 +30,8 @@ public class LockPick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && canClick && !god.GetComponent<GameManager>().IsPaused()){
+        if(Input.GetMouseButtonDown(0) && canClick && !god.GetComponent<GameManager>().IsPaused())
+        {
             CheckColour();
         }
         var main = ps.main;
@@ -38,7 +39,7 @@ public class LockPick : MonoBehaviour
     }
 
     private void CheckColour(){
-        switch(indicator.GetComponent<PickIndicator>().GetColour()){
+        switch (indicator.GetComponent<PickIndicator>().GetColour()){
             case 1:
                 particleColor = new Color (0, 1, 0, 0.5f);
                 ps.Play();

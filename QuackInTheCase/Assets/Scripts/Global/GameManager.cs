@@ -15,12 +15,26 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public GameObject dataPersistentManager;
     public GameObject arcadeManager;
 
+    [SerializeField] private AudioSource clickSoundEffect;
+
+    private void Awake()
+    {
+        gameOver = false;
+    }
+
     private void Start()
     {
         DisableUI();
 
-        if(GameObject.Find("ArcadeManager") != null){
+        if (GameObject.Find("ArcadeManager") != null)
+        {
             arcadeManager = GameObject.Find("ArcadeManager");
+        }
+
+        if (SceneManager.GetActiveScene().name == "MenuScreen")
+        {
+            Debug.Log("Menu Screen music activated.");
+            AudioManager.Instance.PlayMusic("MenuMusic");
         }
     }
 
@@ -111,23 +125,23 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public void ReloadScene()
     {
+        ButtonClick();
         string currentScene = SceneManager.GetActiveScene().name;
         Debug.Log("Reloaded current scene " + currentScene);
         SceneManager.LoadScene(currentScene);
         if (isPaused)
         {
-            gameOver = false;
             UnpauseGame();
         }
     }
 
     public void SwitchScene(string sceneToLoad)
     {
+        ButtonClick();
         SceneManager.LoadScene(sceneToLoad);
         Debug.Log("Switched scene to " + sceneToLoad);
         if (isPaused)
         {
-            gameOver = false;
             UnpauseGame();
         }
     }
@@ -135,6 +149,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void QuitGame()
     {
         Application.Quit();
+        ButtonClick();
     }
 
     public void QuitToMenu()
@@ -146,7 +161,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         SceneManager.LoadScene(0);
         if (isPaused)
         {
-            gameOver = false;
+            ButtonClick();
             UnpauseGame();
         }
     }
@@ -155,10 +170,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
     {
         if(arcadeManager != null){
             QuitToMenu();
-        }else if (FailMenu != null)
+        }
+        else if (FailMenu != null)
         {
             gameOver = true;
             FailMenu.SetActive(true);
+            StopBGMusic();
+            AudioManager.Instance.PlaySFX("GameFail");
             Time.timeScale = 0;
             isPaused = true;
             Debug.Log("You have failed the game.");
@@ -173,6 +191,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
         {
             gameOver = true;
             SuccessMenu.SetActive(true);
+            StopBGMusic();
+            AudioManager.Instance.PlaySFX("GameWin");
             Time.timeScale = 0;
             isPaused = true;
             Debug.Log("Congragulations, you have completed this minigame.");
@@ -186,6 +206,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         {
             isPaused = true;
             pauseMenu.SetActive(true);
+            PauseBGMusic();
             Time.timeScale = 0;
             Debug.Log("The game is now paused.");
         }
@@ -196,6 +217,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
         if (pauseMenu != null)
         {
             isPaused = false;
+            ButtonClick();
+            if (!gameOver)
+            {
+                ResumeBGMusic();
+            }
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
             Debug.Log("The game has been resumed.");
@@ -224,5 +250,25 @@ public class GameManager : MonoBehaviour, IDataPersistence
             FailMenu.SetActive(false);
             Debug.Log("Diabled Fail Menu");
         }
+    }
+
+    public void ButtonClick()
+    {
+        clickSoundEffect.Play();
+    }
+
+    private void StopBGMusic()
+    {
+        AudioManager.Instance.StopMusic();
+    }
+
+    private void PauseBGMusic()
+    {
+        AudioManager.Instance.PauseMusic();
+    }
+
+    private void ResumeBGMusic()
+    {
+        AudioManager.Instance.ResumeMusic();
     }
 }

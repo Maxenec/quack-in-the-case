@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CreditsAnimation : MonoBehaviour
 {
@@ -33,8 +34,14 @@ public class CreditsAnimation : MonoBehaviour
 
     public void SetCredits()
     {
-        rollCredits = false;
+        AudioManager.Instance.StopMusic();
         GetComponent<RectTransform>().anchoredPosition = initialPosition;
         StartCoroutine(Delay());
+    }
+
+    public void StopCredits()
+    {
+        AudioManager.Instance.PlayMusic("MenuMusic");
+        rollCredits = false;
     }
 }
