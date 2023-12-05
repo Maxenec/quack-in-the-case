@@ -16,10 +16,13 @@ public class CarControlls : MonoBehaviour
     //collision check
     private bool hitOb = false;
 
+    public GameObject Explosion;
+
     // Start is called before the first frame update
     void Start()
     {
         hitOb = false;
+        Explosion.SetActive(false);
     }
 
     // Update is called once per frame
@@ -72,6 +75,8 @@ public class CarControlls : MonoBehaviour
         if(collision.gameObject.tag == "Obstacle"){
             //Debug.Log("hit");
             hitOb = true;
+            Explosion.SetActive(true);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
