@@ -13,6 +13,8 @@ public class SuspectController : MonoBehaviour
     public GameObject shield;
     public GameObject attack;
     public GameObject myPos;
+    public ParticleSystem shieldPS;
+    public ParticleSystem damagePS;
     private Vector3 target;
     private float minWait = 1f;
     private float maxWait = 3f;
@@ -29,7 +31,7 @@ public class SuspectController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Hit(int power){//when this is hit, if it is not blocking then reduce it's HP by the power of the hit
@@ -39,6 +41,11 @@ public class SuspectController : MonoBehaviour
             if (!blocking)
             {
                 myHP.GetComponent<HP>().EffectHP(-power);
+                damagePS.Play();
+            } 
+            else
+            {
+                shieldPS.Play();
             }
         }
     }

@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public GameObject shield;
     public GameObject myPos;
     public GameObject god;
+    public ParticleSystem shieldPS;
+    public ParticleSystem damagePS;
     private Vector3 target;
     public int strength = 25;
     public float coolDown = 2f;
@@ -39,8 +41,11 @@ public class PlayerController : MonoBehaviour
         if (myHP != null){
             if (blocking){
                 myHP.GetComponent<HP>().EffectHP(-power);
+                shieldPS.Play();
+                damagePS.Play();
             }
             else{
+                damagePS.Play();
                 myHP.GetComponent<HP>().SetHP(0);
             }
         }
