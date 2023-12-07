@@ -7,6 +7,7 @@ public class FSLevelManager : MonoBehaviour
     private bool gameOver = false;
     public GameObject susHP;
     public GameObject playerHP;
+    public GameObject shield;
     
     // Start is called before the first frame update
     void Start()
@@ -27,11 +28,14 @@ public class FSLevelManager : MonoBehaviour
     {
         if (gameObject.GetComponent<Timer>().TimerStatus())
         {
+            shield.SetActive(false);
             FailLevel();
         } else if (playerHP.GetComponent<HP>().CheckHP()){
             //Debug.Log("ded");
+            shield.SetActive(false);
             FailLevel();
         } else if (susHP.GetComponent<HP>().CheckHP()){
+            shield.SetActive(false);
             WinLevel();
         }
 

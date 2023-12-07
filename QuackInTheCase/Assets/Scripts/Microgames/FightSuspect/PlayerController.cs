@@ -9,12 +9,16 @@ public class PlayerController : MonoBehaviour
     public GameObject shield;
     public GameObject myPos;
     public GameObject god;
+    public ParticleSystem shieldPS;
+    public AudioSource shieldAudio;
+    public ParticleSystem damagePS;
+    public AudioSource damageAudio;
     private Vector3 target;
-    public int strength = 25;
-    public float coolDown = 2f;
-    public bool blocking = false;
-    public bool attacking = false;
-    public bool canAttack = true;
+    private int strength = 25;
+    private float coolDown = 2f;
+    private bool blocking = false;
+    private bool attacking = false;
+    private bool canAttack = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +43,14 @@ public class PlayerController : MonoBehaviour
         if (myHP != null){
             if (blocking){
                 myHP.GetComponent<HP>().EffectHP(-power);
+                shieldPS.Play();
+                shieldAudio.Play();
+                damagePS.Play();
+                damageAudio.Play();
             }
             else{
+                damagePS.Play();
+                damageAudio.Play();
                 myHP.GetComponent<HP>().SetHP(0);
             }
         }

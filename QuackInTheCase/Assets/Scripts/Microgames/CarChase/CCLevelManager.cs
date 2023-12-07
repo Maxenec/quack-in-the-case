@@ -19,11 +19,11 @@ public class CCLevelManager : MonoBehaviour
     {
         if (!gameOver)
         {
-            CheckGameStatus();
+            StartCoroutine(CheckGameStatus());
         }
     }
 
-    private void CheckGameStatus()
+    IEnumerator CheckGameStatus()
     {
         if (gameObject.GetComponent<Timer>().TimerStatus())
         {
@@ -32,6 +32,7 @@ public class CCLevelManager : MonoBehaviour
         }
         else if (player.GetComponent<CarControlls>().HitStatus())
         {
+            yield return new WaitForSeconds(0.667f);
             FailLevel();
         }
     }
