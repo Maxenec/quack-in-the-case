@@ -35,9 +35,9 @@ public class LPLevelManager : MonoBehaviour
 
         if (gameObject.GetComponent<Timer>().TimerStatus())
         {
-            FailLevel();
+            StartCoroutine(FailLevel());
         } else if (lockPick.GetComponent<LockPick>().CheckStatus()){
-            FailLevel();
+            StartCoroutine(FailLevel());
         } else if(pinsUp >= lockPins.Count){
             WinLevel();
         }
@@ -49,9 +49,10 @@ public class LPLevelManager : MonoBehaviour
         gameObject.GetComponent<GameManager>().WinGame();
     }
     
-    private void FailLevel()
+    IEnumerator FailLevel()
     {
         gameOver = true;
+        yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<GameManager>().LoseGame();
     }
 }
