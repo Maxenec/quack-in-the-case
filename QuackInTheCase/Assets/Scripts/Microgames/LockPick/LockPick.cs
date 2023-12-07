@@ -14,6 +14,8 @@ public class LockPick : MonoBehaviour
     private Vector3 target;
     public GameObject god;
     public ParticleSystem ps;
+    public AudioSource pickAudio;
+    public AudioSource snapAudio;
     private Color particleColor;
 
     // Start is called before the first frame update
@@ -43,15 +45,18 @@ public class LockPick : MonoBehaviour
             case 1:
                 particleColor = new Color (0, 1, 0, 0.5f);
                 ps.Play();
+                pickAudio.Play();
                 Push();
                 break;
             case 2:
                 particleColor = new Color (1, 1, 0, 0.5f);
                 ps.Play();
+                pickAudio.Play();
                 break;
             case 3:
                 particleColor = new Color (1, 0.647f, 0, 0.5f);
                 ps.Play();
+                pickAudio.Play();
                 Fall();
                 break;
             case 4:
@@ -69,6 +74,7 @@ public class LockPick : MonoBehaviour
     }
 
     private void Snap(){
+        snapAudio.Play();
         ChangeSprite();
     }
 
@@ -90,7 +96,7 @@ public class LockPick : MonoBehaviour
             canClick = false;
             StartCoroutine(MoveTo(new Vector3(lockPins[currentPin].transform.position.x - 6f, transform.position.y, transform.position.z)));
         }else{
-            ChangeSprite();
+            Snap();
         }
     }
 
