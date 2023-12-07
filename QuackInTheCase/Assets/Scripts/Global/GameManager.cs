@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     {
         if (currentlyUnlockedFirstEpisodeGame > unlockedFirstEpisodeGames)
         {
+            Debug.Log("Saved in data.");
             data.firstEpisodeUnlockedGames = this.currentlyUnlockedFirstEpisodeGame;
         }
 
@@ -85,17 +86,17 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
     public void LevelWonRewards()
     {
+        dataPersistentManager.GetComponent<DataPersistenceManager>().LoadGame();
+
         string sceneName = SceneManager.GetActiveScene().name;
 
         char lastCharacter = sceneName[sceneName.Length - 1];
 
         Debug.Log("Current level completed: " + lastCharacter);
 
-        if (int.Parse(lastCharacter.ToString()) < 6)
-        {
-            currentlyUnlockedFirstEpisodeGame = (int.Parse(lastCharacter.ToString()) + 1);
-        }
-        else
+        currentlyUnlockedFirstEpisodeGame = int.Parse(lastCharacter.ToString()) + 1;
+
+        if (currentlyUnlockedFirstEpisodeGame == 6)
         {
             currentlyUnlockedFirstEpisodeCutscene = (2);
         }
@@ -140,6 +141,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         ButtonClick();
         SceneManager.LoadScene(sceneToLoad);
         Debug.Log("Switched scene to " + sceneToLoad);
+
         if (isPaused)
         {
             UnpauseGame();
