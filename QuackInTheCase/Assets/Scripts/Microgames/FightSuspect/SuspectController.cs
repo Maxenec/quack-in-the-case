@@ -14,7 +14,9 @@ public class SuspectController : MonoBehaviour
     public GameObject attack;
     public GameObject myPos;
     public ParticleSystem shieldPS;
+    public AudioSource shieldAudio;
     public ParticleSystem damagePS;
+    public AudioSource damageAudio;
     private Vector3 target;
     private float minWait = 1f;
     private float maxWait = 3f;
@@ -42,10 +44,12 @@ public class SuspectController : MonoBehaviour
             {
                 myHP.GetComponent<HP>().EffectHP(-power);
                 damagePS.Play();
+                damageAudio.Play();
             } 
             else
             {
                 shieldPS.Play();
+                shieldAudio.Play();
             }
         }
     }
@@ -67,7 +71,7 @@ public class SuspectController : MonoBehaviour
             }
             if (state == 0){//if it picks the idle state then it runs the idle function and starts this function again
                 Idle();
-                ;
+                yield return null;
             }
             else if (state == 1){//if it picks the block state then it runs the block function and starts this function again
                 Block();
