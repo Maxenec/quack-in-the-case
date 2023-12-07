@@ -1178,6 +1178,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128527283}
   m_CullTransparentMesh: 1
+--- !u!1 &137872343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7221027249218051694, guid: d5e5cc73ec0c14a66a246b68a11a7fc3, type: 3}
+  m_PrefabInstance: {fileID: 51815498468969745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &153086846
 GameObject:
   m_ObjectHideFlags: 0
@@ -11315,7 +11320,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   FailMenu: {fileID: 0}
   SuccessMenu: {fileID: 0}
-  dataPersistentManager: {fileID: 0}
+  dataPersistentManager: {fileID: 137872343}
   arcadeManager: {fileID: 0}
   clickSoundEffect: {fileID: 1644711929}
 --- !u!114 &1644711928
@@ -14291,7 +14296,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6680793430009490028, guid: d5e5cc73ec0c14a66a246b68a11a7fc3, type: 3}
   m_PrefabInstance: {fileID: 51815498468969745}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 137872343}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dc2158b3c2974ce1add77fa778b3d64, type: 3}
