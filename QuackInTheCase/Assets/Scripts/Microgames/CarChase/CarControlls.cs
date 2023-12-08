@@ -17,6 +17,7 @@ public class CarControlls : MonoBehaviour
     private bool hitOb = false;
 
     public GameObject Explosion;
+    private bool playedSound;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +30,15 @@ public class CarControlls : MonoBehaviour
     void Update()
     {
         //left arrow key
-        if (Input.GetKeyDown("left") && !god.GetComponent<GameManager>().IsPaused()){
+        if (Input.GetKeyDown("left") || Input.GetKeyDown("a") && !god.GetComponent<GameManager>().IsPaused() & !hitOb){
             //print("left arrow");
+            playedSound = false;
             StartCoroutine(Left());
         }
         //right arrow key
-        if (Input.GetKeyDown("right") && !god.GetComponent<GameManager>().IsPaused()){
+        if (Input.GetKeyDown("right") || Input.GetKeyDown("d") && !god.GetComponent<GameManager>().IsPaused() & !hitOb){
             //print("right arrow");
+            playedSound = false;
             StartCoroutine(Right());
         }
     }
@@ -43,6 +46,10 @@ public class CarControlls : MonoBehaviour
     IEnumerator Left(){
         //check if they are in the right lane
         if(!leftLane){
+            if(!playedSound){
+            gameObject.GetComponent<AudioSource>().Play();
+            playedSound = true;
+            }
             //move car closer to left lane
             transform.position = Vector3.MoveTowards(transform.position, leftLanePos.transform.position, speed * Time.deltaTime);
             //if car is not in the left lane then wait one frame and start this function again
@@ -58,6 +65,10 @@ public class CarControlls : MonoBehaviour
     IEnumerator Right(){
         //check if they are in the left lane
         if(leftLane){
+            if(!playedSound){
+            gameObject.GetComponent<AudioSource>().Play();
+            playedSound = true;
+            }
             //move car closer to right lane
             transform.position = Vector3.MoveTowards(transform.position, rightLanePos.transform.position, speed * Time.deltaTime);
             //if car is not in the right lane then wait one frame and start this function again
