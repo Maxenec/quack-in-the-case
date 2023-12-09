@@ -28,7 +28,7 @@ public class CreditsAnimation : MonoBehaviour
 
     private IEnumerator Delay()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         rollCredits = true;
     }
 
