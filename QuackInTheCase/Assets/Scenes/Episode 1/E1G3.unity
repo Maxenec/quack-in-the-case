@@ -1957,6 +1957,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8838839890539148173, guid: 42dac792df124944f9345cd5abb7d0ca, type: 3}
+      propertyPath: sfx.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838839890539148173, guid: 42dac792df124944f9345cd5abb7d0ca, type: 3}
+      propertyPath: sfx.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 354bdb5a0b3d0444cbaf3d73acbe92c4, type: 3}
+    - target: {fileID: 8838839890539148173, guid: 42dac792df124944f9345cd5abb7d0ca, type: 3}
+      propertyPath: sfx.Array.data[3].name
+      value: BarrelHit
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
