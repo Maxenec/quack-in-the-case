@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FCLevelManager : MonoBehaviour
@@ -51,7 +50,20 @@ public class FCLevelManager : MonoBehaviour
         }
         else
         {
-            gameManager.LoseGame();
+            StartCoroutine(Delay());
         }
+    }
+
+    private IEnumerator Delay()
+    {
+        float winDelay = 1f;
+        Time.timeScale = 0.1f;
+        AudioManager.Instance.PlaySFX("BarrelHit");
+        while (winDelay > 0)
+        {
+            yield return new WaitForSeconds(0.1f);
+            winDelay -= 1f;
+        }
+        gameManager.LoseGame();
     }
 }
