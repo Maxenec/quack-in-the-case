@@ -1710,18 +1710,18 @@ MonoBehaviour:
   - question: Identify the car driven by the rabbit
     pigeonImage: {fileID: 21300000, guid: b2ec71171ab964c65a11012fafe435e9, type: 3}
     catImage: {fileID: 21300000, guid: 4b594f0384f14474089ea46fd8c90f7f, type: 3}
-    pigeonSelectionImage: {fileID: 0}
-    catSelectionImage: {fileID: 0}
+    pigeonSelectionImage: {fileID: 21300000, guid: b2ec71171ab964c65a11012fafe435e9, type: 3}
+    catSelectionImage: {fileID: 21300000, guid: 4b594f0384f14474089ea46fd8c90f7f, type: 3}
   - question: Identify the hat worn by the mastermind
     pigeonImage: {fileID: 21300000, guid: 52a580c8d6d704e0a8dbbfeabed4286e, type: 3}
     catImage: {fileID: 21300000, guid: 4c407a01ae6fe4aedac0e514dade61ea, type: 3}
-    pigeonSelectionImage: {fileID: 0}
-    catSelectionImage: {fileID: 0}
+    pigeonSelectionImage: {fileID: 21300000, guid: f496ba44aa3098f40877920d1e508a65, type: 3}
+    catSelectionImage: {fileID: 21300000, guid: 994898d4912a75d458ee68215e7c0bdc, type: 3}
   - question: 'Identify the glasses from the evidence collection '
     pigeonImage: {fileID: 21300000, guid: 6a41600d0b3b8486091f824dde3c7253, type: 3}
     catImage: {fileID: 21300000, guid: d87e083bdd83b4fcfa91357820058f77, type: 3}
     pigeonSelectionImage: {fileID: 21300000, guid: 1afc44a877bf54daca5f9324b5f430e9, type: 3}
-    catSelectionImage: {fileID: 0}
+    catSelectionImage: {fileID: 21300000, guid: 994898d4912a75d458ee68215e7c0bdc, type: 3}
   caLevelManager: {fileID: 0}
 --- !u!82 &1187219341
 AudioSource:
@@ -1912,7 +1912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1219580683
 MonoBehaviour:
   m_ObjectHideFlags: 0
